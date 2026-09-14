@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-cream: #f8f7f0;
+  --color-forest: #203e32;
+  --color-muted: #59645b;
+  --color-olive: #617346;
+  --color-orange: #f5a66a;
+  --color-sage: #d9e4b6;
+  --color-paper: #eeeee5;
+  --font-sans: var(--font-geist-sans);
+}
+:root {
+  background: #f8f7f0;
+  color: #203e32;
+}
+body {
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+::selection {
+  background: #d9e4b6;
+  color: #203e32;
+}
+:focus-visible {
+  outline: 3px solid #986026;
+  outline-offset: 5px;
+}
+section[id],
+article[id] {
+  scroll-margin-top: 2rem;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-14;
+  }
+  .section-space {
+    @apply py-16 md:py-20;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.16em];
+  }
+  .section-title {
+    @apply text-4xl font-medium leading-[1.12] tracking-[-0.045em] md:text-5xl;
+  }
+  .button {
+    @apply inline-flex min-h-12 items-center justify-center gap-5 rounded-full px-6 py-3 text-sm font-medium transition-colors;
+  }
+  .button-orange {
+    @apply bg-orange text-forest hover:bg-[#ed995a];
+  }
+  .button-outline {
+    @apply border border-forest/25 hover:bg-sage/50;
+  }
+  .nav-link {
+    @apply py-3 underline-offset-8 hover:underline;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

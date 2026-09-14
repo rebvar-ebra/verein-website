@@ -1152,3 +1152,13 @@ Build for the current requirements while leaving clean extension points for futu
 Do not optimize for imaginary future scale at the cost of shipping the current product.
 
 The architecture should remain understandable to a developer who opens the repository six months later and has no desire to solve a puzzle created by their predecessors.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

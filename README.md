@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Verein website
 
-## Getting Started
+German nonprofit website design preview built with Next.js, React, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Preview scope
 
-## Learn More
+The homepage contains responsive navigation, projects, about, participation, news, and help sections. Project and participation details use native disclosures. Contact, Impressum, and Datenschutz have explicit preview information pages. This is not a production launch: no forms, payments, real contact details, legal copy, or confirmed project offers are active. Robots metadata prevents preview indexing.
 
-To learn more about Next.js, take a look at the following resources:
+Editorial sample copy is isolated in `src/lib/preview-content.ts`. It must be replaced with validated Sanity content and approved organization information before launch. The application uses `src/app/(website)` with components and libraries under `src/`. See `docs/folder-structure.md` for the implemented structure and approved production expansion.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Photography
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Local illustrative images from Unsplash, not photographs of Verein or its members:
 
-## Deploy on Vercel
+- https://images.unsplash.com/photo-1529156069898-49953e39b3ac (hero)
+- https://images.unsplash.com/photo-1511632765486-a01980e01a18 (community)
+- https://images.unsplash.com/photo-1464226184884-fa280b87c399 (garden)
+- https://images.unsplash.com/photo-1559027615-cd4628902d4a (volunteering)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Replace illustrative photographs with organization-approved assets before publishing. Next.js serves optimized local copies; no image request goes directly to Unsplash from visitors.
