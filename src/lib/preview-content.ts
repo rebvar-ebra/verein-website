@@ -1,5 +1,6 @@
 /** Editorial design fixtures only. Replace with validated Sanity content before launch. */
 export const navigation = [
+  { label: "Kontakt", href: "/kontakt" },
   { label: "Über uns", href: "/#ueber-uns" },
   { label: "Projekte", href: "/#projekte" },
   { label: "Aktuelles", href: "/#aktuelles" },

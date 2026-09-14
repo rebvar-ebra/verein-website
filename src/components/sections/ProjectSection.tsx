@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { homepage } from "@/lib/preview-content";
-import { Arrow } from "../ui/arrow";
 
 export function ProjectSection() {
   return (
@@ -17,7 +16,7 @@ export function ProjectSection() {
           Projektideen · Entwurf
         </span>
       </div>
-      <div className="grid gap-7 md:grid-cols-3">
+      <div className="grid items-start gap-7 md:grid-cols-3">
         {homepage.projects.map((project, i) => (
           <article key={project.id} className="group">
             <div className="relative mb-5 aspect-[1.4] overflow-hidden rounded-2xl bg-sage">
@@ -37,9 +36,13 @@ export function ProjectSection() {
               {project.title}
             </h3>
             <p className="mb-4 text-sm leading-6 text-muted">{project.text}</p>
-            <details className="border-b border-forest/20 pb-4">
-              <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-medium">
-                Mehr zur Idee <Arrow diagonal />
+            <details className="group/disclosure border-b border-forest/20 pb-4">
+              <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between text-sm font-medium">
+                Mehr zur Idee{" "}
+                <span aria-hidden="true" className="shrink-0 text-xl">
+                  <span className="group-open/disclosure:hidden">+</span>
+                  <span className="hidden group-open/disclosure:inline">−</span>
+                </span>
               </summary>
               <p className="mt-4 text-sm leading-6 text-muted">
                 {project.detail}

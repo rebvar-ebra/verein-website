@@ -1,4 +1,3 @@
-import { Arrow } from "../ui/arrow";
 export function CTASection() {
   return (
     <section id="mitmachen" className="shell section-space">
@@ -11,7 +10,7 @@ export function CTASection() {
           Zeit, Ideen oder Unterstützung. Es gibt viele Wege, dabei zu sein.
         </p>
       </div>
-      <div className="grid gap-5 md:grid-cols-3">
+      <div className="grid items-start gap-5 md:grid-cols-3">
         {[
           {
             title: "Zeit schenken",
@@ -55,10 +54,13 @@ export function CTASection() {
             <p className="mb-7 mt-3 text-sm leading-6 text-muted">
               {item.text}
             </p>
-            <details>
-              <summary className="flex cursor-pointer list-none items-center justify-between border-t border-forest/15 pt-5 text-sm font-medium">
+            <details className="group/disclosure">
+              <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between border-t border-forest/15 pt-5 text-sm font-medium">
                 {item.label}
-                <Arrow diagonal />
+                <span aria-hidden="true" className="shrink-0 text-xl">
+                  <span className="group-open/disclosure:hidden">+</span>
+                  <span className="hidden group-open/disclosure:inline">−</span>
+                </span>
               </summary>
               <p className="mt-4 text-sm leading-6">{item.detail}</p>
             </details>

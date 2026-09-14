@@ -9,7 +9,9 @@ test("mobile navigation opens and closes after selecting a destination", () => {
   expect(toggle.getAttribute("aria-expanded")).toBe("false");
   fireEvent.click(toggle);
   expect(toggle.getAttribute("aria-expanded")).toBe("true");
-  fireEvent.click(screen.getAllByRole("link", { name: "Über uns" }).at(-1)!);
+  const link = screen.getAllByRole("link", { name: "Über uns" }).at(-1)!;
+  link.addEventListener("click", event => event.preventDefault());
+  fireEvent.click(link);
   expect(toggle.getAttribute("aria-expanded")).toBe("false");
 });
 test("Escape closes mobile navigation and returns focus to its toggle", () => {
@@ -21,4 +23,15 @@ test("Escape closes mobile navigation and returns focus to its toggle", () => {
   });
   expect(toggle.getAttribute("aria-expanded")).toBe("false");
   expect(document.activeElement).toBe(toggle);
+});
+test("desktop project dropdown exposes routes and closes on Escape", () => {
+  render(<Header />);
+  const button = screen.getByRole("button", { name: "Projekte" });
+  fireEvent.click(button);
+  expect(button.getAttribute("aria-expanded")).toBe("true");
+  const link = screen.getByRole("link", { name: "Alle Projekte" });
+  expect(link.getAttribute("href")).toBe("/projekte");
+  fireEvent.keyDown(link, { key: "Escape" });
+  expect(button.getAttribute("aria-expanded")).toBe("false");
+  expect(document.activeElement).toBe(button);
 });

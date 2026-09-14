@@ -20,7 +20,7 @@ pnpm build
 
 ## Preview scope
 
-The homepage contains responsive navigation, projects, about, participation, news, and help sections. Project and participation details use native disclosures. Contact, Impressum, and Datenschutz have explicit preview information pages. This is not a production launch: no forms, payments, real contact details, legal copy, or confirmed project offers are active. Robots metadata prevents preview indexing.
+The preview follows the nine Adobe XD wireframes: a full-width homepage banner, project cards, alternating content sections, support cards, FAQ, sponsor placeholders, dropdown navigation and dedicated project, news, membership, donation, about, vacancies and help pages. FAQ uses native disclosures; project and support cards link to their own pages. Contact has a locally validated form preview; Impressum and Datenschutz have explicit preview information pages. This is not a production launch: no message delivery, payments, real contact details, legal copy, or confirmed project offers are active. Robots metadata prevents preview indexing.
 
 Editorial sample copy is isolated in `src/lib/preview-content.ts`. It must be replaced with validated Sanity content and approved organization information before launch. The application uses `src/app/(website)` with components and libraries under `src/`. See `docs/folder-structure.md` for the implemented structure and approved production expansion.
 
@@ -34,3 +34,7 @@ Local illustrative images from Unsplash, not photographs of Verein or its member
 - https://images.unsplash.com/photo-1559027615-cd4628902d4a (volunteering)
 
 Replace illustrative photographs with organization-approved assets before publishing. Next.js serves optimized local copies; no image request goes directly to Unsplash from visitors.
+
+## Wireframe implementation
+
+See `docs/superpowers/plans/2026-09-15-xd-wireframes.md` for the observed Adobe XD layouts and `docs/xd-verification.md` for verification. Existing colors and illustrative photographs are retained. Placeholder metrics, team profiles, sponsors and contact/payment information await organization approval.

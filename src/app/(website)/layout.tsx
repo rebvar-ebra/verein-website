@@ -1,3 +1,4 @@
+import { ContactBar } from "@/components/layout/ContactBar/ContactBar";
 import { Header } from "@/components/layout/Header/Header";
 import { Footer } from "@/components/layout/Footer/Footer";
 export default function WebsiteLayout({
@@ -19,6 +20,7 @@ export default function WebsiteLayout({
         Beispielinhalte zur Abstimmung
       </div>
       <Header />
+      <ContactBar />
       {children}
       <Footer />
     </>

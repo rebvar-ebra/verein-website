@@ -7,7 +7,7 @@ The public Next.js application now uses `src/`. This follows the maintainer's la
 - `src/app/layout.tsx`: document, fonts, global styles, and metadata.
 - `src/app/(website)/layout.tsx`: preview notice, skip link, header, and footer.
 - `src/app/(website)/page.tsx`: homepage composition.
-- `src/app/(website)/kontakt/page.tsx`, `impressum/page.tsx`, `datenschutz/page.tsx`: explicit preview information routes.
+- `src/app/(website)/kontakt/page.tsx`, `impressum/page.tsx`, `datenschutz/page.tsx`: explicit preview routes; contact now includes a locally validated form.
 - `src/components/layout/Header/Header.tsx` and `Footer/Footer.tsx`: existing navigation and footer.
 - `src/components/sections/`: HeroSection, IntroSection, ProjectSection, NewsSection, CTASection, HelpSection, and shared InfoSection.
 - `src/components/ui/arrow.tsx`: existing vector assets.

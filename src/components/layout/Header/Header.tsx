@@ -1,15 +1,22 @@
 "use client";
 import Link from "next/link";
 import { useRef, useState } from "react";
-import { navigation } from "@/lib/preview-content";
-import { Arrow, Flower } from "@/components/ui/arrow";
-
+import { Flower } from "@/components/ui/arrow";
+import { clubLinks, projectLinks } from "@/lib/wireframe-content";
+import { NavigationDropdown } from "./NavigationDropdown";
 export function Header() {
   const [open, setOpen] = useState(false);
   const toggle = useRef<HTMLButtonElement>(null);
+  const mobileLinks = [
+    { label: "Projekte", href: "/projekte" },
+    ...clubLinks,
+    { label: "News", href: "/news" },
+    { label: "Mitglied werden", href: "/mitglied-werden" },
+    { label: "Spenden", href: "/spenden" },
+  ];
   return (
     <header
-      className="relative z-20 border-b border-forest/10"
+      className="relative z-30 border-b border-forest/15 bg-cream"
       onKeyDown={(event) => {
         if (event.key === "Escape" && open) {
           setOpen(false);
@@ -17,34 +24,34 @@ export function Header() {
         }
       }}
     >
-      <div className="shell flex h-24 items-center justify-between gap-6">
+      <div className="shell flex min-h-24 items-center justify-between gap-6">
         <Link
           href="/"
           aria-label="Verein – Startseite"
-          className="flex items-center gap-2 text-4xl font-bold tracking-tighter"
+          className="flex shrink-0 items-center gap-2 text-3xl font-bold tracking-tighter"
         >
           <Flower className="h-9 w-9 text-orange" />
-          verein<span className="text-orange">.</span>
+          verein.
         </Link>
         <nav
           aria-label="Hauptnavigation"
-          className="hidden items-center gap-8 text-sm font-medium lg:flex"
+          className="hidden items-center gap-8 lg:flex"
         >
-          {navigation.map((link) => (
-            <Link key={link.href} href={link.href} className="nav-link">
-              {link.label}
-            </Link>
-          ))}
+          <NavigationDropdown label="Projekte" links={projectLinks} />
+          <NavigationDropdown label="Verein" links={clubLinks} />
+          <Link href="/news" className="nav-link text-sm">
+            News
+          </Link>
         </nav>
         <div className="flex items-center gap-5">
           <Link
-            href="/#hilfe"
-            className="hidden text-sm font-medium underline decoration-forest/30 underline-offset-4 sm:block"
+            href="/mitglied-werden"
+            className="hidden text-sm font-medium md:block"
           >
-            Beratung & Hilfe
+            Mitglied werden
           </Link>
           <Link
-            href="/#spenden"
+            href="/spenden"
             className="button button-orange hidden sm:inline-flex"
           >
             Spenden <span aria-hidden="true">♡</span>
@@ -52,24 +59,15 @@ export function Header() {
           <button
             ref={toggle}
             type="button"
+            aria-label={open ? "Menü schließen" : "Menü öffnen"}
             aria-expanded={open}
             aria-controls="mobile-navigation"
-            aria-label={open ? "Menü schließen" : "Menü öffnen"}
             onClick={() => setOpen(!open)}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-forest/30 lg:hidden"
+            className="flex h-12 w-12 items-center justify-center border border-forest/25 lg:hidden"
           >
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              className="h-5 w-5"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            >
-              <path
-                d={open ? "m6 6 12 12M6 18 18 6" : "M4 7h16M4 12h16M4 17h16"}
-              />
-            </svg>
+            <span aria-hidden="true" className="text-2xl">
+              {open ? "×" : "☰"}
+            </span>
           </button>
         </div>
       </div>
@@ -77,21 +75,16 @@ export function Header() {
         id="mobile-navigation"
         aria-label="Mobile Navigation"
         hidden={!open}
-        className="absolute inset-x-0 top-full border-b border-forest/15 bg-cream px-6 py-6 shadow-lg lg:hidden"
+        className="absolute inset-x-0 top-full max-h-[calc(100dvh-8rem)] overflow-y-auto border-b border-forest/20 bg-cream px-6 py-3 shadow-lg lg:hidden"
       >
-        {[
-          ...navigation,
-          { label: "Beratung & Hilfe", href: "/#hilfe" },
-          { label: "Spenden", href: "/#spenden" },
-        ].map((link) => (
+        {mobileLinks.map((link) => (
           <Link
-            onClick={() => setOpen(false)}
             key={link.href}
             href={link.href}
-            className="flex items-center justify-between border-b border-forest/10 py-4 text-lg"
+            onClick={() => setOpen(false)}
+            className="block border-b border-forest/10 py-4"
           >
             {link.label}
-            <Arrow />
           </Link>
         ))}
       </nav>

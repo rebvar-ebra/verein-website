@@ -1,39 +1,56 @@
-import { Flower } from "@/components/ui/arrow";
 import Link from "next/link";
+import { Flower } from "@/components/ui/arrow";
+import { clubLinks, projectLinks } from "@/lib/wireframe-content";
 export function Footer() {
   return (
     <footer className="bg-forest text-cream">
-      <div className="shell py-12">
-        <div className="flex flex-col justify-between gap-8 sm:flex-row">
-          <div>
-            <Link
-              href="/"
-              className="flex items-center gap-2 text-4xl font-bold tracking-tighter"
-            >
-              <Flower className="h-8 w-8 text-sage" />
-              verein.
-            </Link>
-            <p className="mt-4 text-sm text-cream/70">
-              Miteinander. Füreinander.
-            </p>
-          </div>
-          <nav
-            aria-label="Footernavigation"
-            className="flex flex-wrap gap-x-12 gap-y-5 text-sm"
-          >
-            <Link href="/#ueber-uns">Über uns</Link>
-            <Link href="/#projekte">Projekte</Link>
-            <Link href="/#mitmachen">Mitmachen</Link>
-            <Link href="/kontakt">Kontakt</Link>
+      <div className="shell grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1.2fr_1fr_1fr]">
+        <div>
+          <Link href="/" className="flex items-center gap-2 text-3xl font-bold">
+            <Flower className="h-9 w-9 text-sage" />
+            verein.
+          </Link>
+          <p className="mt-4 text-sm text-cream/70">
+            Miteinander.
+            <br />
+            Füreinander.
+          </p>
+        </div>
+        {[
+          { title: "Projekte", links: projectLinks.slice(1) },
+          { title: "Verein", links: clubLinks },
+          {
+            title: "Unterstützen",
+            links: [
+              { label: "Mitglied werden", href: "/mitglied-werden" },
+              { label: "Spenden", href: "/spenden" },
+              { label: "News", href: "/news" },
+            ],
+          },
+          {
+            title: "Informationen",
+            links: [
+              { label: "Datenschutz", href: "/datenschutz" },
+              { label: "Impressum", href: "/impressum" },
+            ],
+          },
+        ].map((group) => (
+          <nav key={group.title} aria-label={group.title + " im Footer"}>
+            <h2 className="mb-5 text-sm font-semibold">{group.title}</h2>
+            {group.links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="block py-2 text-sm text-cream/80 hover:text-white hover:underline"
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
-        </div>
-        <div className="mt-10 flex flex-wrap justify-between gap-5 border-t border-cream/20 pt-6 text-xs text-cream/65">
-          <p>Verein · Designvorschau · Texte und Bilder zur Abstimmung</p>
-          <div className="flex gap-6">
-            <Link href="/impressum">Impressum</Link>
-            <Link href="/datenschutz">Datenschutz</Link>
-          </div>
-        </div>
+        ))}
+      </div>
+      <div className="shell border-t border-cream/15 py-5 text-xs text-cream/70">
+        Verein · Designvorschau nach Adobe XD · Inhalte zur Abstimmung
       </div>
     </footer>
   );

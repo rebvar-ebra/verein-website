@@ -46,7 +46,7 @@ summary::-webkit-details-marker {
     @apply text-4xl font-medium leading-[1.12] tracking-[-0.045em] md:text-5xl;
   }
   .button {
-    @apply inline-flex min-h-12 items-center justify-center gap-5 rounded-full px-6 py-3 text-sm font-medium transition-colors;
+    @apply inline-flex min-h-12 items-center justify-center gap-5 rounded-md px-6 py-3 text-sm font-medium transition-colors;
   }
   .button-orange {
     @apply bg-orange text-forest hover:bg-[#ed995a];
