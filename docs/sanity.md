@@ -12,7 +12,7 @@ The public website reads published content from Sanity. Private submissions and 
 6. Publish **Website-Einstellungen** and the page documents from the Studio navigation. Create projects and articles with slugs and publication dates. Publish referenced team members too.
 7. Restart the website after changing environment variables. Published edits are revalidated after 60 seconds; drafts and future-dated articles/projects are excluded.
 
-Without both website settings, the existing design preview remains available. A partial configuration fails explicitly. Once configured, empty collections remain empty and unpublished pages show a preparation message; CMS failures reach the Next.js error boundary instead of displaying fictional content.
+Without website environment overrides, the website connects to the public project `x34rtnfv`, dataset `production`. A partial configuration fails explicitly. Once configured, empty collections remain empty and unpublished pages show a preparation message; CMS failures reach the Next.js error boundary instead of displaying fictional content.
 
 ## Editing
 
@@ -34,3 +34,5 @@ The Studio can be deployed with Sanity's CLI from `apps/studio` after configurin
 Studio defaults to the public project `x34rtnfv` and dataset `production`, so a Vercel build does not depend on an uncommitted `.env.local`. Override these with `SANITY_STUDIO_PROJECT_ID` and `SANITY_STUDIO_DATASET` for another environment. Neither value is a secret. The website still uses its own `NEXT_PUBLIC_SANITY_*` settings. Never put an API token in a Studio environment variable.
 
 Allow `https://verein-website-studio.vercel.app` as a credentialed CORS origin in Sanity project API settings so editors can sign in on that domain.
+
+The website also defaults to the connected public project when both `NEXT_PUBLIC_SANITY_*` settings are absent. This prevents hosted builds from silently displaying fixture team profiles. Partial overrides remain invalid.

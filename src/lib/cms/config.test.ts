@@ -2,8 +2,8 @@ import { describe, it, expect } from "vitest";
 import { readCmsConfig } from "./config";
 import { safeHref } from "./content.schema";
 describe("CMS configuration", () => {
-  it("uses preview only when both public settings are absent", () => {
-    expect(readCmsConfig({})).toBeNull();
+  it("uses the connected project when both public settings are absent", () => {
+    expect(readCmsConfig({})).toMatchObject({projectId: "x34rtnfv", dataset: "production"});
     expect(() =>
       readCmsConfig({ NEXT_PUBLIC_SANITY_PROJECT_ID: "abc123" }),
     ).toThrow();
