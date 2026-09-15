@@ -1,12 +1,9 @@
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { schemaTypes } from "./schemaTypes";
-const projectId = process.env.SANITY_STUDIO_PROJECT_ID;
-const dataset = process.env.SANITY_STUDIO_DATASET;
-if (!projectId || !dataset)
-  throw new Error(
-    "Sanity Studio: SANITY_STUDIO_PROJECT_ID und SANITY_STUDIO_DATASET in apps/studio/.env.local setzen.",
-  );
+// Public identifiers, intentionally bundled into the Studio (not credentials).
+const projectId = process.env.SANITY_STUDIO_PROJECT_ID?.trim() || "x34rtnfv";
+const dataset = process.env.SANITY_STUDIO_DATASET?.trim() || "production";
 const singletons = [
   "siteSettings",
   "homepage",
