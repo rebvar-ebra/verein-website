@@ -37,68 +37,7 @@ export default async function Page({
   const projects = await getProjects();
   const project = projects.find((p) => p.id === slug);
   if (!project) notFound();
-  if (!project.isPreview)
-    return (
-      <main id="main-content">
-        <div className="shell pt-10">
-          <PageBanner image={project.image} alt={project.alt} compact />
-        </div>
-        <PageIntro
-          title={project.title}
-          text={project.text}
-          eyebrow={project.category}
-        />
-        <div className="shell pb-16">
-          <RichText value={project.content} />
-          <dl className="my-8 grid gap-6 sm:grid-cols-3">
-            {[
-              ["Ziel", project.target],
-              ["Erreicht", project.achieved],
-              ["Status", project.status],
-            ]
-              .filter(([, value]) => value)
-              .map(([label, value]) => (
-                <div key={label}>
-                  <dt>{label}</dt>
-                  <dd>{value}</dd>
-                </div>
-              ))}
-          </dl>
-          {project.teamMembers.map((member) => (
-            <section key={member._id} className="my-6">
-              <h2>{member.name}</h2>
-              <p>{member.role}</p>
-              {member.image && (
-                <Image
-                  className="mb-4 aspect-square w-80 max-w-full rounded-full object-cover"
-                  src={imageUrl(member.image)}
-                  alt={member.image.alt || ""}
-                  width={320}
-                  height={320}
-                />
-              )}
-            </section>
-          ))}
-          <div className="grid gap-6 md:grid-cols-2">
-            {project.gallery.map(
-              (image, i) =>
-                image && (
-                  <Image
-                    key={i}
-                    src={imageUrl(image)}
-                    alt={image.alt || ""}
-                    width={800}
-                    height={600}
-                    className="rounded-2xl"
-                  />
-                ),
-            )}
-          </div>
-          {project.address && <p className="mt-6">{project.address}</p>}
-          {project.schedule && <p>{project.schedule}</p>}
-        </div>
-      </main>
-    );
+
   return (
     <main id="main-content">
       <div className="shell pt-10">
@@ -106,18 +45,36 @@ export default async function Page({
       </div>
       <PageIntro
         title={project.title}
-        text={project.detail}
-        eyebrow={`${project.category} · Projektentwurf`}
+        text={project.isPreview ? project.detail : project.text}
+        eyebrow={
+          project.isPreview
+            ? `${project.category} · Projektentwurf`
+            : project.category
+        }
       />
-      <StatsSection />
-      <TeamSection title="Projektteam" count={3} />
+      <StatsSection
+        values={[project.startDate, project.target, project.achieved]}
+      />
+      <TeamSection
+        title="Projektteam"
+        count={3}
+        members={project.isPreview ? undefined : project.teamMembers}
+      />
+      {!project.isPreview && (
+        <div className="shell pb-16">
+          <div className="mx-auto max-w-3xl">
+            <RichText value={project.content} />
+          </div>
+        </div>
+      )}
       <div className="shell grid gap-6 pb-10 md:grid-cols-2">
         <PreviewPanel title="Wo wir sind">
           <div className="mb-5 flex aspect-[2/1] items-center justify-center border border-dashed border-forest/20 bg-sage/40">
             Standortkarte folgt
           </div>
           <p>
-            Die Adresse wird ergänzt, sobald der Projektstandort bestätigt ist.
+            {project.address ||
+              "Die Adresse wird ergänzt, sobald der Projektstandort bestätigt ist."}
           </p>
         </PreviewPanel>
         <PreviewPanel title="Was es gibt">
@@ -125,10 +82,28 @@ export default async function Page({
             Wochenplan folgt
           </div>
           <p>
-            Termine und ein freigegebener Wochenplan sind noch nicht verfügbar.
+            {project.schedule ||
+              "Termine und ein freigegebener Wochenplan sind noch nicht verfügbar."}
           </p>
         </PreviewPanel>
       </div>
+      {project.gallery.length > 0 && (
+        <div className="shell grid gap-6 pb-16 md:grid-cols-2">
+          {project.gallery.map(
+            (image, i) =>
+              image && (
+                <Image
+                  key={i}
+                  src={imageUrl(image)}
+                  alt={image.alt || ""}
+                  width={800}
+                  height={600}
+                  className="rounded-2xl"
+                />
+              ),
+          )}
+        </div>
+      )}
       <SplitSection
         title="Wir freuen uns auf dich!"
         text="Die Kontaktdaten des Projektteams werden hier nach Freigabe ergänzt. Der Kontaktbereich zeigt bereits das vorgesehene Formular."

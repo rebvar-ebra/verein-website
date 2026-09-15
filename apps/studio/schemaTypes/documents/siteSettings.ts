@@ -67,6 +67,27 @@ export const siteSettings = defineType({
       type: "array",
       of: [defineArrayMember({ type: "imageWithCaption" })],
     }),
+    defineField({
+      name: "donations",
+      title: "Spendenwege",
+      type: "object",
+      fields: [
+        defineField({
+          name: "accountHolder",
+          title: "Kontoinhaber",
+          type: "string",
+        }),
+        defineField({ name: "iban", title: "IBAN", type: "string" }),
+        defineField({ name: "bic", title: "BIC", type: "string" }),
+        defineField({ name: "bank", title: "Bank", type: "string" }),
+        defineField({
+          name: "paypalUrl",
+          title: "PayPal-Spendenlink",
+          type: "url",
+          validation: (r) => r.uri({ scheme: ["https"] }),
+        }),
+      ],
+    }),
     defineField({ name: "defaultSeo", title: "SEO-Standard", type: "seo" }),
   ],
 });

@@ -165,6 +165,29 @@ export const settingsSchema = z.object({
   quickExitUrl: z.url().refine((url) => url.startsWith("https://")),
   sponsors: z.array(imageSchema),
   donationInformation: bodySchema,
+  donations: z
+    .object({
+      accountHolder: z.string().nullish(),
+      iban: z.string().nullish(),
+      bic: z.string().nullish(),
+      bank: z.string().nullish(),
+      paypalUrl: z
+        .url()
+        .refine((value) => {
+          const url = new URL(value);
+          return (
+            url.protocol === "https:" &&
+            [
+              "paypal.com",
+              "www.paypal.com",
+              "paypal.me",
+              "www.paypal.me",
+            ].includes(url.hostname)
+          );
+        })
+        .nullish(),
+    })
+    .nullish(),
   defaultSeo: seoSchema,
 });
 export type CmsImage = z.infer<typeof imageSchema>;
