@@ -50,7 +50,7 @@ export function Footer() {
         ))}
       </div>
       <div className="shell border-t border-cream/15 py-5 text-xs text-cream/70">
-        Verein · Designvorschau nach Adobe XD · Inhalte zur Abstimmung
+      Designed and built by Rebvar Ebrahimi 
       </div>
     </footer>
   );
