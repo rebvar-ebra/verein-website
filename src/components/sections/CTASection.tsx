@@ -1,3 +1,4 @@
+import { BrandMark } from "@/components/ui/arrow";
 export function CTASection() {
   return (
     <section id="mitmachen" className="shell section-space">
@@ -6,7 +7,7 @@ export function CTASection() {
         <h2 className="section-title">
           Es beginnt <span className="font-serif italic">mit dir.</span>
         </h2>
-        <p className="mt-5 text-muted">
+        <p className="mt-5 text-ink">
           Zeit, Ideen oder Unterstützung. Es gibt viele Wege, dabei zu sein.
         </p>
       </div>
@@ -46,7 +47,7 @@ export function CTASection() {
               className="mb-8 flex h-11 w-11 items-center justify-center rounded-full border border-forest/25 text-xl"
               aria-hidden="true"
             >
-              {["↗", "✳", "♡"][i]}
+              <BrandMark className="h-10 w-10" />
             </span>
             <h3 className="text-2xl font-medium tracking-tight">
               {item.title}

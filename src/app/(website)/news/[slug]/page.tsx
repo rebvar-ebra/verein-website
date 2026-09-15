@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { articles } from "@/lib/wireframe-content";
+import { getArticles } from "@/lib/cms/content";
+import { RichText } from "@/components/cms/RichText";
 import { PageBanner, PageIntro } from "@/components/sections/WireframeSections";
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const articles = await getArticles();
   return articles.map((article) => ({ slug: article.slug }));
 }
 export async function generateMetadata({
@@ -11,10 +13,11 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const articles = await getArticles();
   const article = articles.find((a) => a.slug === slug);
   return {
-    title: article?.title ?? "Beitrag nicht gefunden",
-    description: article?.excerpt,
+    title: article?.seo?.title || article?.title || "Beitrag nicht gefunden",
+    description: article?.seo?.description || article?.excerpt,
   };
 }
 export default async function Page({
@@ -23,6 +26,7 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const articles = await getArticles();
   const article = articles.find((a) => a.slug === slug);
   if (!article) notFound();
   return (
@@ -34,14 +38,10 @@ export default async function Page({
         <PageIntro
           title={article.title}
           text={article.excerpt}
-          eyebrow={`${article.category} · Redaktioneller Entwurf`}
+          eyebrow={`${article.category}${article.isPreview ? " · Redaktioneller Entwurf" : ""}`}
         />
         <div className="mx-auto max-w-4xl gap-12 px-6 pb-16 md:columns-2">
-          {article.paragraphs.map((paragraph) => (
-            <p key={paragraph} className="mb-6 text-base leading-8 text-muted">
-              {paragraph}
-            </p>
-          ))}
+          <RichText value={article.content} />
         </div>
       </article>
       <div className="shell pb-16 text-center">

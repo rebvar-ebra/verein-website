@@ -1,3 +1,7 @@
+import { BrandMark } from "@/components/ui/arrow";
+import { pageMetadata } from "@/lib/cms/metadata";
+import { cmsEnabled } from "@/lib/cms/sanity.client";
+import { EditorialPage } from "@/components/cms/EditorialPage";
 import Link from "next/link";
 import {
   PageBanner,
@@ -5,8 +9,11 @@ import {
   PreviewPanel,
   SplitSection,
 } from "@/components/sections/WireframeSections";
-export const metadata = { title: "Spenden" };
+export async function generateMetadata() {
+  return pageMetadata("donationPage", { title: "Spenden" });
+}
 export default function Page() {
+  if (cmsEnabled) return <EditorialPage type="donationPage"></EditorialPage>;
   return (
     <main id="main-content">
       <PageBanner image="/images/garden.jpg" alt="Vielfältige Gemüseernte" />
@@ -29,7 +36,7 @@ export default function Page() {
         </PreviewPanel>
         <PreviewPanel title="Per PayPal">
           <span aria-hidden="true" className="mb-6 block text-4xl">
-            ♡
+            <BrandMark className="h-6 w-6" />
           </span>
           <p>
             Der offizielle PayPal-Zugang wird hier verlinkt, sobald er

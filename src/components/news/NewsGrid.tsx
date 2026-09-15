@@ -1,7 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
-import { articles } from "@/lib/wireframe-content";
-export function NewsGrid() {
+import { getArticles } from "@/lib/cms/content";
+export async function NewsGrid() {
+  const articles = await getArticles();
+  if (!articles.length)
+    return (
+      <p className="shell py-10">
+        Noch keine veröffentlichten Inhalte vorhanden.
+      </p>
+    );
   return (
     <div className="grid items-start gap-6 md:grid-cols-3">
       {articles.map((article) => (
@@ -20,7 +27,8 @@ export function NewsGrid() {
           </div>
           <div className="p-6">
             <p className="eyebrow mb-3 text-olive">
-              {article.category} · Entwurf
+              {article.category}
+              {article.isPreview ? " · Entwurf" : ""}
             </p>
             <h2 className="text-xl font-medium">
               <Link

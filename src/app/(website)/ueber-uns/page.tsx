@@ -1,3 +1,6 @@
+import { pageMetadata } from "@/lib/cms/metadata";
+import { cmsEnabled } from "@/lib/cms/sanity.client";
+import { EditorialPage } from "@/components/cms/EditorialPage";
 import {
   PageBanner,
   PageIntro,
@@ -6,8 +9,11 @@ import {
   SplitSection,
 } from "@/components/sections/WireframeSections";
 import { homepage } from "@/lib/preview-content";
-export const metadata = { title: "Über uns" };
+export async function generateMetadata() {
+  return pageMetadata("aboutPage", { title: "Über uns" });
+}
 export default function Page() {
+  if (cmsEnabled) return <EditorialPage type="aboutPage"></EditorialPage>;
   return (
     <main id="main-content">
       <PageBanner />

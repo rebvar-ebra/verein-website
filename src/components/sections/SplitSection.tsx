@@ -37,7 +37,7 @@ export function SplitSection({
           <h2 className="text-3xl font-medium tracking-tight md:text-4xl">
             {title}
           </h2>
-          <p className="mt-5 text-base leading-7 text-muted">{text}</p>
+          <p className="mt-5 text-base leading-7 text-ink">{text}</p>
           {children}
           {href && label && (
             <Link href={href} className="button button-orange mt-6">

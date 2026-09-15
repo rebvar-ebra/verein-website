@@ -1,3 +1,4 @@
+import Image from "next/image";
 export function Arrow({
   diagonal = false,
   className = "",
@@ -24,15 +25,15 @@ export function Arrow({
     </svg>
   );
 }
-export function Flower({ className = "" }: { className?: string }) {
+export function BrandMark({ className = "" }: { className?: string }) {
   return (
-    <svg
+    <Image
+      src="/brand/anahita-mark.webp"
+      alt=""
       aria-hidden="true"
-      viewBox="0 0 80 80"
-      className={className}
-      fill="currentColor"
-    >
-      <path d="M40 4c12 0 8 19 8 19s12-16 20-8-8 20-8 20 19-4 19 8-19 8-19 8 16 12 8 20-20-8-20-8 4 17-8 17-8-17-8-17-12 16-20 8 8-20 8-20-19 4-19-8 19-8 19-8S4 23 12 15s20 8 20 8-4-19 8-19Z" />
-    </svg>
+      width={80}
+      height={80}
+      className={`object-contain ${className}`}
+    />
   );
 }

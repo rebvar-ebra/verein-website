@@ -1,7 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import { projects } from "@/lib/wireframe-content";
-export function ProjectGrid() {
+import { getProjects } from "@/lib/cms/content";
+export async function ProjectGrid() {
+  const projects = await getProjects();
+  if (!projects.length)
+    return (
+      <p className="shell py-10">
+        Noch keine veröffentlichten Inhalte vorhanden.
+      </p>
+    );
   return (
     <div className="grid items-start gap-6 md:grid-cols-3">
       {projects.map((project) => (

@@ -41,3 +41,11 @@ yarn-error.log*
 next-env.d.ts
 
 !.env.example
+
+# Sanity workspace artifacts
+/apps/studio/node_modules/
+/apps/studio/dist/
+/apps/studio/.sanity/
+/apps/studio/schema.json
+AGENTS.md
+CLAUDE.md

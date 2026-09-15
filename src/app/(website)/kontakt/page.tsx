@@ -1,11 +1,21 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/cms/metadata";
+import { cmsEnabled } from "@/lib/cms/sanity.client";
+import { EditorialPage } from "@/components/cms/EditorialPage";
 import { ContactForm } from "@/components/forms/ContactForm/ContactForm";
-export const metadata: Metadata = {
-  title: "Kontakt",
-  description:
-    "Kontaktformular von Verein – derzeit als Formularvorschau ohne Versand verfügbar.",
-};
+export async function generateMetadata() {
+  return pageMetadata("contactPage", {
+    title: "Kontakt",
+    description:
+      "Kontaktformular von Verein – derzeit als Formularvorschau ohne Versand verfügbar.",
+  });
+}
 export default function Page() {
+  if (cmsEnabled)
+    return (
+      <EditorialPage type="contactPage">
+        <ContactForm />
+      </EditorialPage>
+    );
   return (
     <main id="main-content" className="shell section-space">
       <div className="grid items-start gap-10 lg:grid-cols-[.8fr_1.2fr] lg:gap-16">
@@ -16,7 +26,7 @@ export default function Page() {
             <br />
             <span className="font-serif italic">ins Gespräch kommen.</span>
           </h1>
-          <p className="mt-6 max-w-md text-base leading-7 text-muted">
+          <p className="mt-6 max-w-md text-base leading-7 text-ink">
             Ob Frage, Idee oder Interesse am Mitmachen – hier entsteht der
             Kontaktbereich von Verein.
           </p>

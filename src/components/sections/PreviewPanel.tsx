@@ -1,4 +1,3 @@
-
 export function PreviewPanel({
   title,
   children,

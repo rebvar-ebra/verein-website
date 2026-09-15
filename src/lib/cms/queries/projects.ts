@@ -1,0 +1,3 @@
+export const teamProjection = `{_id,name,role,email,image}`;
+export const projectProjection = `{_id,"id":slug.current,title,"text":coalesce(shortDescription,""),"category":coalesce(category,"Projekt"),"image":heroImage,"content":coalesce(content,[]),startDate,target,achieved,status,address,schedule,"teamMembers":coalesce(teamMembers[]->${teamProjection},[]),"gallery":coalesce(gallery,[]),seo,"featured":coalesce(featured,false),publishedAt}`;
+export const projectsQuery = `*[_type == "project" && defined(slug.current) && defined(publishedAt) && dateTime(publishedAt) <= dateTime(now())] | order(featured desc,publishedAt desc) ${projectProjection}`;

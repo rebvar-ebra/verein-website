@@ -1,3 +1,7 @@
+import { getSettings } from "@/lib/cms/content";
+import { pageMetadata } from "@/lib/cms/metadata";
+import { cmsEnabled } from "@/lib/cms/sanity.client";
+import { EditorialPage } from "@/components/cms/EditorialPage";
 import Link from "next/link";
 import {
   PageBanner,
@@ -5,8 +9,31 @@ import {
   SplitSection,
 } from "@/components/sections/WireframeSections";
 import { QuickExitButton } from "@/components/help/QuickExitButton";
-export const metadata = { title: "Beratung & Hilfe" };
-export default function Page() {
+export async function generateMetadata() {
+  return pageMetadata("helpPage", { title: "Beratung & Hilfe" });
+}
+export default async function Page() {
+  const settings = await getSettings();
+  if (cmsEnabled)
+    return (
+      <EditorialPage type="helpPage">
+        <QuickExitButton url={settings?.quickExitUrl} />
+        {settings?.emergencyPhone && (
+          <a
+            className="button button-orange"
+            href={`tel:${settings.emergencyPhone}`}
+          >
+            {settings.emergencyPhone}
+          </a>
+        )}
+        {settings?.emergencyUrl && (
+          <a className="button button-outline" href={settings.emergencyUrl}>
+            Hilfeangebot öffnen
+          </a>
+        )}
+        <p>Das schnelle Verlassen löscht nicht den Browserverlauf.</p>
+      </EditorialPage>
+    );
   return (
     <main id="main-content">
       <QuickExitButton />

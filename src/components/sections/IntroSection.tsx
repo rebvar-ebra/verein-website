@@ -1,12 +1,12 @@
 import { homepage } from "@/lib/preview-content";
-import { Flower } from "../ui/arrow";
+import { BrandMark } from "../ui/arrow";
 export function IntroSection() {
   return (
     <section id="ueber-uns" className="bg-forest text-cream">
       <div className="shell section-space grid gap-10 lg:grid-cols-[.65fr_1.35fr] lg:gap-20">
         <div>
           <p className="eyebrow text-sage">Das ist Verein</p>
-          <Flower className="mt-10 h-28 w-28 text-sage" />
+          <BrandMark className="mt-10 h-28 w-28 text-sage" />
         </div>
         <div>
           <h2 className="section-title">

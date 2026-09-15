@@ -10,7 +10,7 @@ test("mobile navigation opens and closes after selecting a destination", () => {
   fireEvent.click(toggle);
   expect(toggle.getAttribute("aria-expanded")).toBe("true");
   const link = screen.getAllByRole("link", { name: "Über uns" }).at(-1)!;
-  link.addEventListener("click", event => event.preventDefault());
+  link.addEventListener("click", (event) => event.preventDefault());
   fireEvent.click(link);
   expect(toggle.getAttribute("aria-expanded")).toBe("false");
 });

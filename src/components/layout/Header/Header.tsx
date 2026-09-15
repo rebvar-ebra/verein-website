@@ -1,15 +1,23 @@
 "use client";
+import { BrandMark } from "@/components/ui/arrow";
 import Link from "next/link";
 import { useRef, useState } from "react";
-import { Flower } from "@/components/ui/arrow";
+import Image from "next/image";
 import { clubLinks, projectLinks } from "@/lib/wireframe-content";
 import { NavigationDropdown } from "./NavigationDropdown";
-export function Header() {
+export function Header({
+  navigation = clubLinks,
+  projects = projectLinks,
+}: {
+  name?: string;
+  navigation?: { label: string; href: string }[];
+  projects?: { label: string; href: string }[];
+}) {
   const [open, setOpen] = useState(false);
   const toggle = useRef<HTMLButtonElement>(null);
   const mobileLinks = [
     { label: "Projekte", href: "/projekte" },
-    ...clubLinks,
+    ...navigation,
     { label: "News", href: "/news" },
     { label: "Mitglied werden", href: "/mitglied-werden" },
     { label: "Spenden", href: "/spenden" },
@@ -27,18 +35,24 @@ export function Header() {
       <div className="shell flex min-h-24 items-center justify-between gap-6">
         <Link
           href="/"
-          aria-label="Verein – Startseite"
+          aria-label="Anahita – Startseite"
           className="flex shrink-0 items-center gap-2 text-3xl font-bold tracking-tighter"
         >
-          <Flower className="h-9 w-9 text-orange" />
-          verein.
+          <Image
+            src="/brand/anahita-caption.webp"
+            alt="Anahita – interkulturelles Frauenzentrum für Teilhabe & Bildung"
+            width={657}
+            height={199}
+            priority
+            className="h-auto w-44 sm:w-56 lg:w-64"
+          />
         </Link>
         <nav
           aria-label="Hauptnavigation"
           className="hidden items-center gap-8 lg:flex"
         >
-          <NavigationDropdown label="Projekte" links={projectLinks} />
-          <NavigationDropdown label="Verein" links={clubLinks} />
+          <NavigationDropdown label="Projekte" links={projects} />
+          <NavigationDropdown label="Verein" links={navigation} />
           <Link href="/news" className="nav-link text-sm">
             News
           </Link>
@@ -54,7 +68,10 @@ export function Header() {
             href="/spenden"
             className="button button-orange hidden sm:inline-flex"
           >
-            Spenden <span aria-hidden="true">♡</span>
+            Spenden{" "}
+            <span aria-hidden="true">
+              <BrandMark className="h-6 w-6 brightness-0 invert" />
+            </span>
           </Link>
           <button
             ref={toggle}
@@ -66,7 +83,18 @@ export function Header() {
             className="flex h-12 w-12 items-center justify-center border border-forest/25 lg:hidden"
           >
             <span aria-hidden="true" className="text-2xl">
-              {open ? "×" : "☰"}
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                className="h-6 w-6"
+              >
+                <path
+                  d={open ? "M6 6l12 12M18 6 6 18" : "M4 6h16M4 12h16M4 18h16"}
+                />
+              </svg>
             </span>
           </button>
         </div>

@@ -1,3 +1,6 @@
+import { pageMetadata } from "@/lib/cms/metadata";
+import { cmsEnabled } from "@/lib/cms/sanity.client";
+import { EditorialPage } from "@/components/cms/EditorialPage";
 import Link from "next/link";
 import {
   PageBanner,
@@ -5,8 +8,11 @@ import {
   PreviewPanel,
   SplitSection,
 } from "@/components/sections/WireframeSections";
-export const metadata = { title: "Mitglied werden" };
+export async function generateMetadata() {
+  return pageMetadata("membershipPage", { title: "Mitglied werden" });
+}
 export default function Page() {
+  if (cmsEnabled) return <EditorialPage type="membershipPage"></EditorialPage>;
   return (
     <main id="main-content">
       <PageBanner

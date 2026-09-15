@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Flower } from "@/components/ui/arrow";
+import Image from "next/image";
 import { clubLinks, projectLinks } from "@/lib/wireframe-content";
 export function Footer() {
   return (
@@ -7,8 +7,13 @@ export function Footer() {
       <div className="shell grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1.2fr_1fr_1fr]">
         <div>
           <Link href="/" className="flex items-center gap-2 text-3xl font-bold">
-            <Flower className="h-9 w-9 text-sage" />
-            verein.
+            <Image
+              src="/brand/anahita-white.webp"
+              alt="Anahita"
+              width={400}
+              height={160}
+              className="h-auto w-48"
+            />
           </Link>
           <p className="mt-4 text-sm text-cream/70">
             Miteinander.
@@ -50,7 +55,7 @@ export function Footer() {
         ))}
       </div>
       <div className="shell border-t border-cream/15 py-5 text-xs text-cream/70">
-      Designed and built by Rebvar Ebrahimi 
+        Designed and built by Rebvar Ebrahimi
       </div>
     </footer>
   );

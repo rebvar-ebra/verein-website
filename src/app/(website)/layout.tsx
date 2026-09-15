@@ -1,9 +1,18 @@
+import { getSettings, getProjects } from "@/lib/cms/content";
+import { cmsEnabled } from "@/lib/cms/sanity.client";
 import { ContactBar } from "@/components/layout/ContactBar/ContactBar";
 import { Header } from "@/components/layout/Header/Header";
 import { Footer } from "@/components/layout/Footer/Footer";
-export default function WebsiteLayout({
+export default async function WebsiteLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const settings = await getSettings();
+  const projects = cmsEnabled
+    ? (await getProjects()).map((p) => ({
+        label: p.title,
+        href: `/projekte/${p.id}`,
+      }))
+    : undefined;
   return (
     <>
       <a
@@ -19,7 +28,11 @@ export default function WebsiteLayout({
         </span>{" "}
         Beispielinhalte zur Abstimmung
       </div>
-      <Header />
+      <Header
+        name={settings?.organisationName}
+        navigation={cmsEnabled ? (settings?.navigation ?? []) : undefined}
+        projects={projects}
+      />
       <ContactBar />
       {children}
       <Footer />

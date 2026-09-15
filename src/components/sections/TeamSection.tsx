@@ -1,4 +1,3 @@
-
 export function TeamSection({
   title = "Unser Team",
   count = 6,

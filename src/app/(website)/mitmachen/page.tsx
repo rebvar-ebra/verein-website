@@ -1,3 +1,6 @@
+import { pageMetadata } from "@/lib/cms/metadata";
+import { cmsEnabled } from "@/lib/cms/sanity.client";
+import { EditorialPage } from "@/components/cms/EditorialPage";
 import Link from "next/link";
 import {
   PageBanner,
@@ -5,8 +8,13 @@ import {
   PreviewPanel,
   SplitSection,
 } from "@/components/sections/WireframeSections";
-export const metadata = { title: "Stellenangebote & Mitmachen" };
+export async function generateMetadata() {
+  return pageMetadata("applicationPage", {
+    title: "Stellenangebote & Mitmachen",
+  });
+}
 export default function Page() {
+  if (cmsEnabled) return <EditorialPage type="applicationPage"></EditorialPage>;
   return (
     <main id="main-content">
       <PageBanner

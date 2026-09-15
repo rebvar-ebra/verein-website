@@ -1,4 +1,3 @@
-
 export function SponsorSection() {
   return (
     <section className="shell section-space text-center">

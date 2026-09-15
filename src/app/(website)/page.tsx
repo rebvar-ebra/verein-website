@@ -1,3 +1,5 @@
+import { cmsEnabled } from "@/lib/cms/sanity.client";
+import { EditorialPage } from "@/components/cms/EditorialPage";
 import Link from "next/link";
 import {
   PageBanner,
@@ -10,6 +12,7 @@ import {
 import { ProjectGrid } from "@/components/projects/ProjectGrid";
 import { homepage } from "@/lib/preview-content";
 export default function Home() {
+  if (cmsEnabled) return <EditorialPage type="homepage"></EditorialPage>;
   return (
     <main id="main-content">
       <PageBanner />
