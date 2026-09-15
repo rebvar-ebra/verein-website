@@ -85,6 +85,10 @@ export const teamSchema = z.object({
   image: imageSchema,
 });
 export const projectSchema = z.object({
+  faqs: z
+    .array(z.object({ question: z.string(), answer: z.string() }))
+    .default([]),
+  sponsors: z.array(imageSchema).default([]),
   _id: z.string(),
   id: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
   title: z.string().min(1),

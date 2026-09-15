@@ -1,8 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getArticles } from "@/lib/cms/content";
-export async function NewsGrid() {
-  const articles = await getArticles();
+export async function NewsGrid({
+  excludeSlug,
+  limit,
+}: { excludeSlug?: string; limit?: number } = {}) {
+  const articles = (await getArticles())
+    .filter((article) => article.slug !== excludeSlug)
+    .slice(0, limit);
   if (!articles.length)
     return (
       <p className="shell py-10">

@@ -1,3 +1,4 @@
+import { NewsGrid } from "@/components/news/NewsGrid";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getArticles } from "@/lib/cms/content";
@@ -44,6 +45,10 @@ export default async function Page({
           <RichText value={article.content} />
         </div>
       </article>
+      <section className="shell section-space">
+        <h2 className="mb-10 text-center">Weitere News</h2>
+        <NewsGrid excludeSlug={article.slug} limit={3} />
+      </section>
       <div className="shell pb-16 text-center">
         <Link href="/news" className="button button-outline">
           ← Alle News

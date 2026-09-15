@@ -38,6 +38,14 @@ export function TeamSection({
               )}
               <p className="mt-4 font-medium">{member.name}</p>
               <p className="mt-1 text-sm text-muted">{member.role}</p>
+              {member.email && (
+                <a
+                  className="mt-3 inline-block text-sm underline"
+                  href={`mailto:${member.email}`}
+                >
+                  E-Mail
+                </a>
+              )}
             </div>
           ))}
         </div>

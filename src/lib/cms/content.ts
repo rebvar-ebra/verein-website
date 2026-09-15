@@ -40,6 +40,8 @@ export const getProjects = cache(async () => {
       schedule: null,
       teamMembers: [],
       gallery: [],
+      faqs: [],
+      sponsors: [],
       seo: null,
       featured: true,
       publishedAt: "",

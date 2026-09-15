@@ -5,6 +5,18 @@ export const project = defineType({
   type: "document",
   fields: [
     defineField({
+      name: "faqs",
+      title: "Häufige Fragen",
+      type: "array",
+      of: [defineArrayMember({ type: "faq" })],
+    }),
+    defineField({
+      name: "sponsors",
+      title: "Projektförderer",
+      type: "array",
+      of: [defineArrayMember({ type: "imageWithCaption" })],
+    }),
+    defineField({
       name: "title",
       title: "Titel",
       type: "string",

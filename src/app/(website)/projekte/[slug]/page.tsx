@@ -1,3 +1,4 @@
+import { PageFaqs, PageSponsors } from "@/components/cms/StructureSections";
 import Image from "next/image";
 import { imageUrl } from "@/lib/cms/sanity.image";
 import { notFound } from "next/navigation";
@@ -111,6 +112,11 @@ export default async function Page({
         alt={project.alt}
         href="/kontakt"
         label="Zum Kontaktbereich"
+      />
+      <PageFaqs faqs={project.faqs} />
+      <PageSponsors
+        title="Projekt gefördert durch:"
+        images={project.sponsors}
       />
     </main>
   );
