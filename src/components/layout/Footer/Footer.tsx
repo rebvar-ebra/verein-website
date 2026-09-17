@@ -16,8 +16,7 @@ export function Footer() {
             />
           </Link>
           <p className="mt-4 text-sm text-cream/70">
-            Miteinander.
-            <br />
+Interkulturelles Frauenzentrum  <br /> für Teilhabe & Bildung           
             Füreinander.
           </p>
         </div>
