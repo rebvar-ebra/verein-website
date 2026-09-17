@@ -96,7 +96,7 @@ export function PageFaqs({ faqs }: { faqs: CmsPage["faqs"] }) {
 }
 export function PageSponsors({
   images,
-  title = "Wir werden gefördert durch:",
+  title = "Förderpartner",
 }: {
   images: CmsImage[];
   title?: string;
@@ -119,11 +119,12 @@ export function PageSponsors({
             image && (
               <Image
                 key={i}
-                src={imageUrl(image, 320)}
+                src={imageUrl(image, 1000)}
                 alt={image.alt || ""}
-                width={160}
-                height={100}
-                className="h-20 w-36 object-contain"
+                width={400}
+                height={160}
+                sizes="(max-width: 640px) 90vw, 400px"
+                className="h-40 w-full max-w-sm rounded-none object-contain"
               />
             ),
         )}
