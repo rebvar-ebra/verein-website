@@ -20,13 +20,13 @@ export default function Page() {
       <PageIntro
         title="Über uns"
         text={homepage.about}
-        eyebrow="Das ist Verein"
+        eyebrow="Das ist Anahita"
       />
       <StatsSection />
       <TeamSection />
       <SplitSection
         title="Unsere Gründung"
-        text="Jeder Verein beginnt mit einer Idee. Hier wird künftig die vom Verein freigegebene Gründungsgeschichte erzählt – mit den Menschen, Anfängen und Schritten, die ihn geprägt haben."
+        text="Jeder Anahita beginnt mit einer Idee. Hier wird künftig die vom Anahita freigegebene Gründungsgeschichte erzählt – mit den Menschen, Anfängen und Schritten, die ihn geprägt haben."
         image="/images/together.jpg"
         alt="Vier Menschen stehen Arm in Arm im Abendlicht"
         href="/mitmachen"

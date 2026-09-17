@@ -22,7 +22,7 @@ Interkulturelles Frauenzentrum  <br /> für Teilhabe & Bildung
         </div>
         {[
           { title: "Projekte", links: projectLinks.slice(1) },
-          { title: "Verein", links: clubLinks },
+          { title: "Anahita", links: clubLinks },
           {
             title: "Unterstützen",
             links: [

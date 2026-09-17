@@ -24,7 +24,7 @@ The website remains marked as a design preview and excluded from indexing. Conta
 
 - `pnpm studio:typecheck`
 - `pnpm studio:build` (requires Studio project settings)
-- `pnpm --filter @verein/studio schema:extract`
+- `pnpm --filter @Anahita/studio schema:extract`
 - `pnpm lint && pnpm typecheck && pnpm test && pnpm build`
 
 The Studio can be deployed with Sanity's CLI from `apps/studio` after configuring your project. No cloud project, account, dataset, token or deployment is created automatically by this integration.
@@ -33,6 +33,6 @@ The Studio can be deployed with Sanity's CLI from `apps/studio` after configurin
 
 Studio defaults to the public project `x34rtnfv` and dataset `production`, so a Vercel build does not depend on an uncommitted `.env.local`. Override these with `SANITY_STUDIO_PROJECT_ID` and `SANITY_STUDIO_DATASET` for another environment. Neither value is a secret. The website still uses its own `NEXT_PUBLIC_SANITY_*` settings. Never put an API token in a Studio environment variable.
 
-Allow `https://verein-website-studio.vercel.app` as a credentialed CORS origin in Sanity project API settings so editors can sign in on that domain.
+Allow `https://Anahita-website-studio.vercel.app` as a credentialed CORS origin in Sanity project API settings so editors can sign in on that domain.
 
 The website also defaults to the connected public project when both `NEXT_PUBLIC_SANITY_*` settings are absent. This prevents hosted builds from silently displaying fixture team profiles. Partial overrides remain invalid.

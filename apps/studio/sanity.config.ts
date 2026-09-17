@@ -17,8 +17,8 @@ const singletons = [
   "privacyPage",
 ];
 export default defineConfig({
-  name: "verein",
-  title: "Verein – Redaktion",
+  name: "Anahita",
+  title: "Anahita – Redaktion",
   projectId,
   dataset,
   plugins: [

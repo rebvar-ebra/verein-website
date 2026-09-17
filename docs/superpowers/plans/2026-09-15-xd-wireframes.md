@@ -4,7 +4,7 @@ Source: https://xd.adobe.com/view/df2df6cb-764c-4ec2-8c58-6ffbee59c224-8a7e/
 User requested implementation based on this design and confirmed continuation.
 
 ## Observed screens
-1. Startseite: navigation with Projekte/Verein dropdowns, News, membership/donation links; separate contact strip; full-width banner; centered introduction; three project cards; alternating help/news image sections; two support cards; FAQ; sponsors; multi-column footer.
+1. Startseite: navigation with Projekte/Anahita dropdowns, News, membership/donation links; separate contact strip; full-width banner; centered introduction; three project cards; alternating help/news image sections; two support cards; FAQ; sponsors; multi-column footer.
 2. Projekt: project image, introduction, three metrics, team, location/schedule cards, contact section.
 3. News_Archiv: centered heading, three-column image grid.
 4. News: wide image, centered title, two-column article body.

@@ -7,7 +7,7 @@ export default function Page() {
     <main id="main-content">
       <PageIntro
         title="Alle News"
-        text="Einblicke in das Vereinsleben. Die folgenden Beiträge zeigen die Gestaltung des künftigen News-Archivs."
+        text="Einblicke in das Anahitasleben. Die folgenden Beiträge zeigen die Gestaltung des künftigen News-Archivs."
         eyebrow="Einblicke & Geschichten"
       />
       <section className="shell pb-20">

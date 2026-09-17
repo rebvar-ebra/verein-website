@@ -23,7 +23,7 @@ export default function Page() {
       />
       <PageIntro
         title="Du willst ein Teil unseres Teams werden?"
-        text="Zeit, Ideen und Fähigkeiten einbringen. Hier entsteht der Überblick über ehrenamtliches Engagement und Stellenangebote bei Verein."
+        text="Zeit, Ideen und Fähigkeiten einbringen. Hier entsteht der Überblick über ehrenamtliches Engagement und Stellenangebote bei Anahita."
       />
       <section className="shell pb-16 text-center">
         <h2 className="text-3xl font-medium">Was du erwarten kannst</h2>
@@ -49,7 +49,7 @@ export default function Page() {
         <div className="grid items-start gap-6 md:grid-cols-2">
           <PreviewPanel title="Ehrenamtlich mitmachen">
             <p>
-              Konkrete Aufgaben und Möglichkeiten werden vom Verein ergänzt.
+              Konkrete Aufgaben und Möglichkeiten werden vom Anahita ergänzt.
               Aktuell ist hier noch kein Einsatz ausgeschrieben.
             </p>
             <Link href="/kontakt" className="button button-outline mt-5">
@@ -69,7 +69,7 @@ export default function Page() {
         </div>
       </section>
       <SplitSection
-        title="Lerne Verein kennen"
+        title="Lerne Anahita kennen"
         text="Menschen machen den Unterschied. Auf unserer Über-uns-Seite zeigen wir, wo die Geschichte und Teamvorstellung künftig ihren Platz finden."
         image="/images/together.jpg"
         alt="Menschen im Abendlicht"

@@ -5,15 +5,15 @@ export const articles = [
   {
     slug: "ein-blick-hinter-die-kulissen",
     title: "Ein Blick hinter die Kulissen",
-    category: "Vereinsleben",
+    category: "Anahitasleben",
     image: "/images/community.jpg",
     alt: "Eine ehrenamtliche Person bei einer Veranstaltung",
     excerpt: "Menschen, Ideen und das, was uns verbindet.",
     paragraphs: [
       "Eine Gemeinschaft lebt von den Menschen, die sie gestalten. Hier entsteht Raum für ihre Geschichten, Perspektiven und Erfahrungen.",
-      "Dieser Artikel ist ein redaktioneller Entwurf für die Designvorschau. Der Verein ergänzt hier künftig Einblicke in seine Arbeit und die Menschen dahinter.",
+      "Dieser Artikel ist ein redaktioneller Entwurf für die Designvorschau. Der Anahita ergänzt hier künftig Einblicke in seine Arbeit und die Menschen dahinter.",
       "Ob im gemeinsamen Alltag oder bei einer neuen Idee: Zuhören und der Austausch von Erfahrungen können Menschen zusammenbringen.",
-      "An dieser Stelle werden künftig die Menschen zu Wort kommen, die das Vereinsleben gestalten. Ihre freigegebenen Geschichten und Bilder folgen.",
+      "An dieser Stelle werden künftig die Menschen zu Wort kommen, die das Anahitasleben gestalten. Ihre freigegebenen Geschichten und Bilder folgen.",
     ],
   },
   {
@@ -25,7 +25,7 @@ export const articles = [
     excerpt: "Zusammen denken. Gemeinsam etwas bewegen.",
     paragraphs: [
       "Gute Ideen entstehen oft im Gespräch. Ein anderer Blickwinkel, eine neue Frage oder der Wunsch, etwas gemeinsam anzugehen.",
-      "Hier kann der Verein künftig über Beteiligungsmöglichkeiten und gemeinsame Vorhaben berichten. Dieser Beitrag ist eine Vorschau, kein aktueller Aufruf.",
+      "Hier kann der Anahita künftig über Beteiligungsmöglichkeiten und gemeinsame Vorhaben berichten. Dieser Beitrag ist eine Vorschau, kein aktueller Aufruf.",
       "Konkrete Termine und Ansprechpersonen werden erst nach redaktioneller Freigabe veröffentlicht.",
       "Bis dahin zeigt diese Seite, wie ein Beitrag aufgebaut ist und wie weitere Nachrichten erreichbar sind.",
     ],
@@ -39,17 +39,17 @@ export const articles = [
     excerpt: "Kleine Schritte, die Menschen zusammenbringen.",
     paragraphs: [
       "Ein gemeinsamer Ort kann vieles sein: ein Garten, ein Treffpunkt oder ein Raum für neue Ideen.",
-      "Dieser Beispielbeitrag stellt die Gestaltung einer Projektgeschichte vor. Er beschreibt noch kein bestätigtes Angebot des Vereins.",
+      "Dieser Beispielbeitrag stellt die Gestaltung einer Projektgeschichte vor. Er beschreibt noch kein bestätigtes Angebot des Anahitas.",
       "Hier werden künftig freigegebene Projekteinblicke, Erfahrungen und Bilder ihren Platz finden.",
-      "Die Projektübersicht zeigt weitere Beispiele für die zukünftige Darstellung der Vereinsarbeit.",
+      "Die Projektübersicht zeigt weitere Beispiele für die zukünftige Darstellung der Anahitasarbeit.",
     ],
   },
 ];
 export const faqs = [
   {
-    question: "Wie kann ich Verein kennenlernen?",
+    question: "Wie kann ich Anahita kennenlernen?",
     answer:
-      "Auf der Seite „Über uns“ findest du den geplanten Aufbau unserer Vereinsvorstellung. Inhalte und Teamprofile werden noch vom Verein ergänzt.",
+      "Auf der Seite „Über uns“ findest du den geplanten Aufbau unserer Anahitasvorstellung. Inhalte und Teamprofile werden noch vom Anahita ergänzt.",
   },
   {
     question: "Wie werde ich Mitglied?",
@@ -59,7 +59,7 @@ export const faqs = [
   {
     question: "Kann ich bereits spenden?",
     answer:
-      "Noch nicht über diese Vorschau. Bankverbindung und PayPal-Zugang werden erst nach Bestätigung durch den Verein aktiviert.",
+      "Noch nicht über diese Vorschau. Bankverbindung und PayPal-Zugang werden erst nach Bestätigung durch den Anahita aktiviert.",
   },
   {
     question: "Wo finde ich Beratung und Hilfe?",

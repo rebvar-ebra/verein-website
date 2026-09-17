@@ -28,7 +28,7 @@ export default function Page() {
           {[
             {
               title: "Informieren",
-              text: "Voraussetzungen, Mitgliedsbeiträge und Satzung werden nach Freigabe durch Verein veröffentlicht.",
+              text: "Voraussetzungen, Mitgliedsbeiträge und Satzung werden nach Freigabe durch Anahita veröffentlicht.",
             },
             {
               title: "Antrag vorbereiten",
@@ -36,7 +36,7 @@ export default function Page() {
             },
             {
               title: "Rückmeldung erhalten",
-              text: "Ein eingereichter Antrag wird vom Verein geprüft. Eine Mitgliedschaft wird durch das Ausfüllen eines Formulars nicht automatisch bestätigt.",
+              text: "Ein eingereichter Antrag wird vom Anahita geprüft. Eine Mitgliedschaft wird durch das Ausfüllen eines Formulars nicht automatisch bestätigt.",
             },
           ].map((step, i) => (
             <li key={step.title} className="border-t border-forest/15 pt-7">

@@ -4,7 +4,7 @@ Source: https://xd.adobe.com/view/df2df6cb-764c-4ec2-8c58-6ffbee59c224-8a7e/
 
 All nine artboards inspected in Adobe XD. Desktop layout structure applied using existing cream/green/orange styling. This is a layout adaptation, not a claim of pixel-identical reproduction or production service availability.
 
-Implemented: homepage with wide hero, centered intro, projects, alternating help/news sections, membership/donation cards, FAQ and sponsor placeholders; project listing/detail, news listing/detail, about/team, membership steps, bank/PayPal donation preview, vacancies/engagement, help and quick exit. Contact form retained. Header now has Projects/Verein dropdowns and a contact strip; footer links to dedicated routes.
+Implemented: homepage with wide hero, centered intro, projects, alternating help/news sections, membership/donation cards, FAQ and sponsor placeholders; project listing/detail, news listing/detail, about/team, membership steps, bank/PayPal donation preview, vacancies/engagement, help and quick exit. Contact form retained. Header now has Projects/Anahita dropdowns and a contact strip; footer links to dedicated routes.
 
 Verification:
 - Required lint, typecheck, five tests and production build pass.

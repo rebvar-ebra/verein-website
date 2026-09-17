@@ -6,7 +6,7 @@ export const siteSettings = defineType({
   fields: [
     defineField({
       name: "organisationName",
-      title: "Vereinsname",
+      title: "Anahitasname",
       type: "string",
       validation: (r) => r.required(),
     }),
@@ -33,7 +33,7 @@ export const siteSettings = defineType({
     }),
     defineField({
       name: "navigation",
-      title: "Verein-Menü",
+      title: "Anahita-Menü",
       type: "array",
       of: [defineArrayMember({ type: "link" })],
     }),
