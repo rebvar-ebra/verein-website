@@ -1,4 +1,4 @@
-# Verein folder structure
+# Anahita folder structure
 
 The public Next.js application now uses `src/`. This follows the maintainer's latest structure rather than the earlier proposed `apps/web` location. All application components, features, and libraries belong inside `src`; public images remain in `public/`, configuration remains at the repository root, and Sanity Studio will live in `apps/studio`.
 

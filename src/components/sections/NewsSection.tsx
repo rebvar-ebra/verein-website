@@ -14,7 +14,7 @@ export function NewsSection() {
             <span className="font-serif italic">Neues?</span>
           </h2>
           <p className="mt-6 max-w-xs text-sm leading-6 text-muted">
-            Hier wächst der Platz für Neuigkeiten aus unserem Vereinsleben.
+            Hier wächst der Platz für Neuigkeiten aus unserem Anahitasleben.
           </p>
         </div>
         <div>

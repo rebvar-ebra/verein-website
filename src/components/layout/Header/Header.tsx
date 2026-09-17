@@ -52,7 +52,7 @@ export function Header({
           className="hidden items-center gap-8 lg:flex"
         >
           <NavigationDropdown label="Projekte" links={projects} />
-          <NavigationDropdown label="Verein" links={navigation} />
+          <NavigationDropdown label="Anahita" links={navigation} />
           <Link href="/news" className="nav-link text-sm">
             News
           </Link>

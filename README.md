@@ -1,4 +1,4 @@
-# Verein Website
+# Anahita Website
 
 A modern website for a German nonprofit organization , built with Next.js, React, TypeScript, and Tailwind CSS.
 

@@ -1,11 +1,11 @@
-# Verein Homepage Implementation Plan
+# Anahita Homepage Implementation Plan
 
 > Execute inline in the current session, following the approved design.
 
-**Goal:** Deliver a responsive German homepage design preview for Verein.
+**Goal:** Deliver a responsive German homepage design preview for Anahita.
 **Architecture:** Keep the existing Next.js app structure. Separate layout and homepage sections from typed editorial preview data. Use native HTML for simple disclosure interactions.
 **Tech Stack:** Next.js, React, TypeScript, Tailwind CSS.
-**Spec:** docs/superpowers/specs/2026-09-14-verein-design.md
+**Spec:** docs/superpowers/specs/2026-09-14-Anahita-design.md
 
 ## Global Constraints
 - Organization content remains explicitly draft pending approval and Sanity integration.

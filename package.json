@@ -1,5 +1,5 @@
 {
-  "name": "verein-website",
+  "name": "Anahita-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,9 +9,9 @@
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
-    "studio": "pnpm --filter @verein/studio dev",
-    "studio:build": "pnpm --filter @verein/studio build",
-    "studio:typecheck": "pnpm --filter @verein/studio typecheck"
+    "studio": "pnpm --filter @Anahita/studio dev",
+    "studio:build": "pnpm --filter @Anahita/studio build",
+    "studio:typecheck": "pnpm --filter @Anahita/studio typecheck"
   },
   "dependencies": {
     "@portabletext/react": "^8.0.1",

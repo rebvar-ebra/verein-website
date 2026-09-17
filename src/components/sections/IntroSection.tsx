@@ -5,7 +5,7 @@ export function IntroSection() {
     <section id="ueber-uns" className="bg-forest text-cream">
       <div className="shell section-space grid gap-10 lg:grid-cols-[.65fr_1.35fr] lg:gap-20">
         <div>
-          <p className="eyebrow text-sage">Das ist Verein</p>
+          <p className="eyebrow text-sage">Das ist Anahita</p>
           <BrandMark className="mt-10 h-28 w-28 text-sage" />
         </div>
         <div>

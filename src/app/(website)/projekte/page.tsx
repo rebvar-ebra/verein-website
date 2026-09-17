@@ -9,7 +9,7 @@ export default function Page() {
     <main id="main-content">
       <PageIntro
         title="Unsere Projekte"
-        text="Räume für Begegnung, gemeinsame Ideen und Engagement. Entdecke die Projektvorschau von Verein."
+        text="Räume für Begegnung, gemeinsame Ideen und Engagement. Entdecke die Projektvorschau von Anahita."
         eyebrow="Gemeinsam gestalten"
       />
       <section className="shell pb-16">

@@ -10,7 +10,7 @@ export const homepage = {
   eyebrow: "Miteinander. Füreinander.",
   title: ["Gemeinsam", "wird mehr", "möglich."],
   introduction:
-    "Eine starke Gemeinschaft beginnt mit Menschen, die füreinander da sind. Entdecke Verein und die Möglichkeiten, gemeinsam etwas zu bewegen.",
+    "Eine starke Gemeinschaft beginnt mit Menschen, die füreinander da sind. Entdecke Anahita und die Möglichkeiten, gemeinsam etwas zu bewegen.",
   about:
     "Wir glauben an das, was entsteht, wenn Menschen zusammenkommen. An kleine Schritte, offene Türen und Ideen, die gemeinsam wachsen.",
   projects: [
@@ -22,7 +22,7 @@ export const homepage = {
       image: "/images/together.jpg",
       alt: "Vier Menschen stehen Arm in Arm im Abendlicht",
       detail:
-        "Dieser Entwurf zeigt, wie ein Begegnungsprojekt vorgestellt werden kann. Beschreibung, Ort und Teilnahmemöglichkeiten werden vom Verein ergänzt.",
+        "Dieser Entwurf zeigt, wie ein Begegnungsprojekt vorgestellt werden kann. Beschreibung, Ort und Teilnahmemöglichkeiten werden vom Anahita ergänzt.",
     },
     {
       id: "garten",
@@ -47,9 +47,9 @@ export const homepage = {
   ],
   news: [
     {
-      category: "Vereinsleben",
+      category: "Anahitasleben",
       title: "Ein Blick hinter die Kulissen",
-      text: "Hier finden künftig Geschichten von den Menschen hinter Verein ihren Platz.",
+      text: "Hier finden künftig Geschichten von den Menschen hinter Anahita ihren Platz.",
     },
     {
       category: "Mitmachen",
