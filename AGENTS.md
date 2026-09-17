@@ -847,6 +847,8 @@ Do not disable ESLint rules merely to silence legitimate issues.
 
 ## 28. Git Workflow
 
+For each feature, create a separate branch from updated `master`. Push the feature branch before merging it into `master`, then push `master`. Use an explicitly requested branch name when provided. Never implement new features directly on `master`.
+
 Preferred branches:
 
 ```text
