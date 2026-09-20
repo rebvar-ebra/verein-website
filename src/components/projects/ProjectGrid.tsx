@@ -11,17 +11,17 @@ export async function ProjectGrid() {
       </p>
     );
   return (
-    <div className="grid items-start gap-6 md:grid-cols-2">
+    <div className="grid gap-6 md:grid-cols-2">
       {projects.map((project) => (
         <article
           key={project.id}
-          className="overflow-hidden rounded-2xl border border-forest/20 bg-white/50"
+          className="flex h-full flex-col overflow-hidden rounded-2xl border border-forest/20 bg-white/50"
         >
           <Link
             href={`/projekte/${project.id}`}
             tabIndex={-1}
             aria-hidden="true"
-            className="relative block overflow-hidden rounded-2xl aspect-[1.8]"
+            className="relative block shrink-0 overflow-hidden rounded-2xl aspect-[1.8]"
           >
             <Image
               src={project.logo ? imageUrl(project.logo, 1000) : project.image}
@@ -31,7 +31,7 @@ export async function ProjectGrid() {
               className={project.logo ? "object-contain bg-white p-6" : "object-cover"}
             />
           </Link>
-          <div className="p-6 text-center">
+          <div className="flex flex-1 flex-col p-6 text-center">
             <p className="eyebrow mb-3 text-olive">{project.category}</p>
             <h3 className="text-xl font-medium">{project.title}</h3>
             <p className="mb-6 mt-3 text-sm leading-6 text-muted">
@@ -39,7 +39,7 @@ export async function ProjectGrid() {
             </p>
             <Link
               href={`/projekte/${project.id}`}
-              className="button button-outline w-full"
+              className="button button-outline mt-auto w-full"
               aria-label={`${project.title} – zum Projekt`}
             >
               Zum Projekt →

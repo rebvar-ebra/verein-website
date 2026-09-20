@@ -6,7 +6,7 @@ export function SupportSection() {
       <h2 className="mb-10 text-center text-3xl font-medium tracking-tight">
         Unsere Unterstützung braucht auch dich.
       </h2>
-      <div className="mx-auto grid max-w-3xl items-start gap-6 sm:grid-cols-2">
+      <div className="mx-auto grid max-w-3xl gap-6 sm:grid-cols-2">
         {[
           {
             title: "Mitglied werden",
@@ -24,9 +24,9 @@ export function SupportSection() {
           <article
             key={item.href}
             id={item.href.slice(1)}
-            className="overflow-hidden rounded-2xl border border-forest/20 bg-white/50"
+            className="flex h-full flex-col overflow-hidden rounded-2xl border border-forest/20 bg-white/50"
           >
-            <div className="relative overflow-hidden rounded-2xl aspect-[2/1]">
+            <div className="relative shrink-0 overflow-hidden rounded-2xl aspect-[2/1]">
               <Image
                 src={item.image}
                 alt=""
@@ -35,10 +35,10 @@ export function SupportSection() {
                 className="object-cover"
               />
             </div>
-            <div className="p-7 text-center">
+            <div className="flex flex-1 flex-col p-7 text-center">
               <h3 className="text-2xl font-medium">{item.title}</h3>
               <p className="my-4 text-sm leading-6 text-muted">{item.text}</p>
-              <Link href={item.href} className="button button-outline w-full">
+              <Link href={item.href} className="button button-outline mt-auto w-full">
                 {item.title} →
               </Link>
             </div>
