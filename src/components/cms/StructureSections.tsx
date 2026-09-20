@@ -39,7 +39,7 @@ export function ActionCards({
         {actions.map((action, i) => (
           <article
             key={i}
-            className="overflow-hidden rounded-2xl border border-divider bg-white/50"
+            className="flex h-full flex-col overflow-hidden rounded-2xl border border-divider bg-white/50"
           >
             {action.image && (
               <Image
@@ -47,15 +47,15 @@ export function ActionCards({
                 alt={action.image.alt || ""}
                 width={800}
                 height={400}
-                className="aspect-[2/1] w-full object-cover"
+                className="aspect-[2/1] w-full shrink-0 object-cover"
               />
             )}
-            <div className="p-7 text-center">
+            <div className="flex flex-1 flex-col p-7 text-center">
               <h3>{action.title}</h3>
               <p className="my-4">{action.text}</p>
               {action.link && (
                 <Link
-                  className="button button-outline w-full"
+                  className="button button-outline mt-auto w-full"
                   href={action.link.href}
                 >
                   {action.link.label} →
