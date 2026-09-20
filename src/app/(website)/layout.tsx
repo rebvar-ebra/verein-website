@@ -21,13 +21,6 @@ export default async function WebsiteLayout({
       >
         Zum Inhalt springen
       </a>
-      <div className="bg-forest px-4 py-2 text-center text-[11px] tracking-wide text-cream">
-        DESIGNVORSCHAU{" "}
-        <span aria-hidden="true" className="mx-2">
-          ·
-        </span>{" "}
-        Beispielinhalte zur Abstimmung
-      </div>
       <Header
         name={settings?.organisationName}
         navigation={cmsEnabled ? (settings?.navigation ?? []) : undefined}
