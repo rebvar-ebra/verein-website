@@ -14,10 +14,12 @@ const openSans = localFont({
   variable: "--font-open-sans",
   display: "swap",
 });
-const zedou = localFont({
-  src: "./fonts/zedou.woff2",
-  weight: "400",
-  variable: "--font-zedou",
+const houschka = localFont({
+  src: [
+    { path: "./fonts/houschka-medium.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/houschka-bold.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-houschka",
   display: "swap",
 });
 const previewMetadata: Metadata = {
@@ -59,7 +61,7 @@ export default function RootLayout({
   return (
     <html
       lang="de"
-      className={`${openSans.variable} ${zedou.variable} antialiased`}
+      className={`${openSans.variable} ${houschka.variable} antialiased`}
     >
       <body>{children}</body>
     </html>

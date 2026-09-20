@@ -39,10 +39,10 @@ export function Header({
           className="flex shrink-0 items-center gap-2 text-3xl font-bold tracking-tighter"
         >
           <Image
-            src="/brand/neuer-tag.png"
+            src="/brand/neuer-tag-caption.webp"
             alt="Neuer Tag"
-            width={955}
-            height={359}
+            width={700}
+            height={178}
             priority
             className="h-auto w-44 sm:w-56 lg:w-64"
           />
