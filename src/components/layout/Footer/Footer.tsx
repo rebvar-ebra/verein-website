@@ -8,11 +8,11 @@ export function Footer() {
         <div>
           <Link href="/" className="flex items-center gap-2 text-3xl font-bold">
             <Image
-              src="/brand/neuer-tag.png"
+              src="/brand/neuer-tag-caption.webp"
               alt="Neuer Tag"
-              width={400}
-              height={160}
-              className="h-auto w-48 brightness-0 invert"
+              width={700}
+              height={178}
+              className="h-auto w-48 rounded bg-white p-3"
             />
           </Link>
           <p className="mt-4 text-sm text-cream/70">
