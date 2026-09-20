@@ -6,7 +6,7 @@ export async function generateMetadata() {
   return pageMetadata("contactPage", {
     title: "Kontakt",
     description:
-      "Kontaktformular von Anahita – derzeit als Formularvorschau ohne Versand verfügbar.",
+      "Kontaktformular von Neuer Tag – derzeit als Formularvorschau ohne Versand verfügbar.",
   });
 }
 export default function Page() {
@@ -28,13 +28,13 @@ export default function Page() {
           </h1>
           <p className="mt-6 max-w-md text-base leading-7 text-ink">
             Ob Frage, Idee oder Interesse am Mitmachen – hier entsteht der
-            Kontaktbereich von Anahita.
+            Kontaktbereich von Neuer Tag.
           </p>
           <div className="mt-8 rounded-2xl bg-paper p-6">
             <h2 className="text-lg font-medium">Kontaktmöglichkeiten</h2>
             <p className="mt-3 text-sm leading-6 text-muted">
               E-Mail-Adresse, Telefonnummer und Anschrift werden nach
-              Bestätigung durch Anahita ergänzt. Aktuell ist über diese Seite
+              Bestätigung durch Neuer Tag ergänzt. Aktuell ist über diese Seite
               noch keine Kontaktaufnahme möglich.
             </p>
           </div>

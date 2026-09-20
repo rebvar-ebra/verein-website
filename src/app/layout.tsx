@@ -22,14 +22,14 @@ const zedou = localFont({
 });
 const previewMetadata: Metadata = {
   title: {
-    default: "Anahita – Miteinander. Füreinander.",
-    template: "%s | Anahita",
+    default: "Neuer Tag – Miteinander. Füreinander.",
+    template: "%s | Neuer Tag",
   },
   description:
-    "Designvorschau für Anahita: Gemeinschaft entdecken, Projekte kennenlernen und gemeinsam etwas bewegen.",
+    "Designvorschau für Neuer Tag: Gemeinschaft entdecken, Projekte kennenlernen und gemeinsam etwas bewegen.",
   robots: { index: false, follow: false },
   openGraph: {
-    title: "Anahita – Miteinander. Füreinander.",
+    title: "Neuer Tag – Miteinander. Füreinander.",
     description: "Eine Designvorschau für mehr Miteinander.",
     locale: "de_DE",
     type: "website",

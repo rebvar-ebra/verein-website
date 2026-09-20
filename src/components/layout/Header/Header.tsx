@@ -35,14 +35,14 @@ export function Header({
       <div className="shell flex min-h-24 items-center justify-between gap-6">
         <Link
           href="/"
-          aria-label="Anahita – Startseite"
+          aria-label="Neuer Tag – Startseite"
           className="flex shrink-0 items-center gap-2 text-3xl font-bold tracking-tighter"
         >
           <Image
-            src="/brand/anahita-caption.webp"
-            alt="Anahita – interkulturelles Frauenzentrum für Teilhabe & Bildung"
-            width={657}
-            height={199}
+            src="/brand/neuer-tag.png"
+            alt="Neuer Tag"
+            width={955}
+            height={359}
             priority
             className="h-auto w-44 sm:w-56 lg:w-64"
           />
@@ -52,7 +52,7 @@ export function Header({
           className="hidden items-center gap-8 lg:flex"
         >
           <NavigationDropdown label="Projekte" links={projects} />
-          <NavigationDropdown label="Anahita" links={navigation} />
+          <NavigationDropdown label="Neuer Tag" links={navigation} />
           <Link href="/news" className="nav-link text-sm">
             News
           </Link>

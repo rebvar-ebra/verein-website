@@ -17,7 +17,7 @@ export default function Home() {
     <main id="main-content">
       <PageBanner />
       <PageIntro
-        title="Wir sind Anahita."
+        title="Wir sind Neuer Tag."
         text={homepage.introduction}
         eyebrow="Miteinander. Füreinander."
       />
@@ -43,14 +43,14 @@ export default function Home() {
             href="/ueber-uns"
             className="mr-6 mt-3 inline-block text-sm underline underline-offset-4"
           >
-            Mehr über Anahita
+            Mehr über Neuer Tag
           </Link>
         </SplitSection>
       </div>
       <div id="aktuelles">
         <SplitSection
           title="Stetig in Bewegung"
-          text="Einblicke, Geschichten und neue Ideen. Hier entsteht der Platz für Nachrichten aus dem Anahitasleben."
+          text="Einblicke, Geschichten und neue Ideen. Hier entsteht der Platz für Nachrichten aus dem Vereinsleben."
           image="/images/community.jpg"
           alt="Ehrenamtliche Person bei einer Veranstaltung"
           href="/news"

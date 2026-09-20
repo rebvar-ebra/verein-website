@@ -18,7 +18,7 @@ const singletons = [
 ];
 export default defineConfig({
   name: "Anahita",
-  title: "Anahita – Redaktion",
+  title: "Neuer Tag – Redaktion",
   projectId,
   dataset,
   plugins: [

@@ -20,13 +20,13 @@ export default function Page() {
       <PageIntro
         title="Über uns"
         text={homepage.about}
-        eyebrow="Das ist Anahita"
+        eyebrow="Das ist Neuer Tag"
       />
       <StatsSection />
       <TeamSection />
       <SplitSection
         title="Unsere Gründung"
-        text="Jeder Anahita beginnt mit einer Idee. Hier wird künftig die vom Anahita freigegebene Gründungsgeschichte erzählt – mit den Menschen, Anfängen und Schritten, die ihn geprägt haben."
+        text="Jeder Verein beginnt mit einer Idee. Hier wird künftig die vom Verein Neuer Tag freigegebene Gründungsgeschichte erzählt – mit den Menschen, Anfängen und Schritten, die ihn geprägt haben."
         image="/images/together.jpg"
         alt="Vier Menschen stehen Arm in Arm im Abendlicht"
         href="/mitmachen"

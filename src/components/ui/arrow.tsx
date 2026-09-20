@@ -28,7 +28,7 @@ export function Arrow({
 export function BrandMark({ className = "" }: { className?: string }) {
   return (
     <Image
-      src="/brand/anahita-mark.webp"
+      src="/brand/neuer-tag-mark.png"
       alt=""
       aria-hidden="true"
       width={80}

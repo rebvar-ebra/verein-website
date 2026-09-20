@@ -23,7 +23,7 @@ export function CTASection() {
           },
           {
             title: "Mitglied werden",
-            text: "Werde Teil der Gemeinschaft und begleite Anahita auf seinem Weg.",
+            text: "Werde Teil der Gemeinschaft und begleite Neuer Tag auf seinem Weg.",
             label: "Zur Mitgliedschaft",
             id: "mitglied-werden",
             detail:

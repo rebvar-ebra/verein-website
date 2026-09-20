@@ -1164,3 +1164,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+## Organization identity
+
+The website belongs to the association **Neuer Tag**. **Anahita** and **DALIA** are its projects, each with its own logo. Use Neuer Tag for site-wide branding and metadata. Do not list Neuer Tag as its own funding partner. Keep project logos distinct from the association logo.

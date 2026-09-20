@@ -42,7 +42,11 @@ export default async function Page({
   return (
     <main id="main-content">
       <div className="shell pt-10">
-        <PageBanner image={project.image} alt={project.alt} compact />
+        {project.logo ? (
+          <div className="mx-auto flex max-w-5xl justify-center rounded-2xl bg-white p-8">
+            <Image src={imageUrl(project.logo, 1200)} alt={project.logo.alt || project.title} width={600} height={240} className="h-40 w-full object-contain sm:h-60" priority />
+          </div>
+        ) : <PageBanner image={project.image} alt={project.alt} compact />}
       </div>
       <PageIntro
         title={project.title}

@@ -10,7 +10,7 @@ export function SupportSection() {
         {[
           {
             title: "Mitglied werden",
-            text: "Gemeinschaft mitgestalten und Anahita begleiten.",
+            text: "Gemeinschaft mitgestalten und Neuer Tag begleiten.",
             image: "/images/together.jpg",
             href: "/mitglied-werden",
           },
