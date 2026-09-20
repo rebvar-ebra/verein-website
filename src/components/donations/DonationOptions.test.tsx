@@ -18,3 +18,10 @@ it("links only to the supplied PayPal destination", () => {
     screen.getByRole("link", { name: /Zu PayPal/ }).getAttribute("href"),
   ).toBe("https://www.paypal.com/donate/example");
 });
+it("opens the imported Betterplace campaign without inventing an amount parameter", () => {
+  const url = "https://www.betterplace.org/de/donate/platform/projects/147505-ein-interkultureller-frauentreff-fuer-beratung-und-bildung";
+  render(<DonationOptions details={{ betterplaceUrl: url }} />);
+  fireEvent.click(screen.getByRole("radio", {name: "100 €"}));
+  expect(screen.getByRole("link", {name: /Zu Betterplace/}).getAttribute("href")).toBe(url);
+  expect(screen.getByText(/Wähle deinen Betrag von 100 €/)).toBeTruthy();
+});

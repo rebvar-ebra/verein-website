@@ -1,3 +1,4 @@
+import { RichText } from "@/components/cms/RichText";
 import Image from "next/image";
 import { imageUrl } from "@/lib/cms/sanity.image";
 import type { CmsTeamMember } from "@/lib/cms/content.schema";
@@ -10,6 +11,7 @@ export function TeamSection({
   count?: number;
   members?: CmsTeamMember[];
 }) {
+  if (members && !members.length) return null;
   return (
     <section className="shell section-space text-center">
       <h2 className="text-3xl font-medium">{title}</h2>
@@ -36,8 +38,12 @@ export function TeamSection({
                   className="mx-auto h-24 w-24 rounded-full bg-sage"
                 />
               )}
+              {member.image?.caption && <p className="mt-2 text-xs text-muted">{member.image.caption}</p>}
               <p className="mt-4 font-medium">{member.name}</p>
               <p className="mt-1 text-sm text-muted">{member.role}</p>
+              {member.languages && <p className="mt-2 text-sm text-muted">{member.languages}</p>}
+              {member.phone && <a className="mt-2 block text-sm underline" href={`tel:${member.phone.replace(/[^+0-9]/g, "")}`}>{member.phone}</a>}
+              {member.bio.length > 0 && <details className="mt-3 text-left text-sm"><summary className="cursor-pointer text-center underline">Mehr über {member.name}</summary><div className="mt-3"><RichText value={member.bio} /></div></details>}
               {member.email && (
                 <a
                   className="mt-3 inline-block text-sm underline"

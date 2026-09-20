@@ -42,7 +42,7 @@ export async function EditorialPage({
       </div>
     </div>
   );
-  const stats = (
+  const stats = page.statistics.length > 0 && (
     <StatsSection
       values={page.statistics.map((s) => s.value)}
       labels={
@@ -74,6 +74,7 @@ export async function EditorialPage({
             text={page.sections[0].text}
             image={imageUrl(page.sections[0].image)}
             alt={page.sections[0].image?.alt || ""}
+            caption={page.sections[0].image?.caption || undefined}
           >
             <div className="mt-6">
               <h3>Du brauchst Beratung oder Hilfe?</h3>
@@ -290,6 +291,7 @@ export async function EditorialPage({
           <PageBanner
             image={imageUrl(page.hero.image)}
             alt={page.hero.image.alt || ""}
+            caption={page.hero.image.caption || undefined}
             compact={type !== "homepage"}
           />
         </div>

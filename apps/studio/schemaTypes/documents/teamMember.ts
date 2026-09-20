@@ -4,6 +4,8 @@ export const teamMember = defineType({
   title: "Teammitglied",
   type: "document",
   fields: [
+    defineField({ name: "phone", title: "Öffentliches Telefon", type: "string" }),
+    defineField({ name: "languages", title: "Sprachen", type: "string" }),
     defineField({
       name: "name",
       title: "Name",

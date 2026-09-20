@@ -57,9 +57,9 @@ export default async function Page({
             : project.category
         }
       />
-      <StatsSection
+      {[project.startDate, project.target, project.achieved].some(Boolean) && <StatsSection
         values={[project.startDate, project.target, project.achieved]}
-      />
+      />}
       <TeamSection
         title="Projektteam"
         count={3}
@@ -74,18 +74,12 @@ export default async function Page({
       )}
       <div className="shell grid gap-6 pb-10 md:grid-cols-2">
         <PreviewPanel title="Wo wir sind">
-          <div className="mb-5 flex aspect-[2/1] items-center justify-center border border-dashed border-forest/20 bg-sage/40">
-            Standortkarte folgt
-          </div>
-          <p>
+          <p className="whitespace-pre-line">
             {project.address ||
               "Die Adresse wird ergänzt, sobald der Projektstandort bestätigt ist."}
           </p>
         </PreviewPanel>
         <PreviewPanel title="Was es gibt">
-          <div className="mb-5 flex aspect-[2/1] items-center justify-center border border-dashed border-forest/20 bg-sage/40">
-            Wochenplan folgt
-          </div>
           <p>
             {project.schedule ||
               "Termine und ein freigegebener Wochenplan sind noch nicht verfügbar."}
@@ -97,21 +91,23 @@ export default async function Page({
           {project.gallery.map(
             (image, i) =>
               image && (
+                <figure key={i}>
                 <Image
-                  key={i}
                   src={imageUrl(image)}
                   alt={image.alt || ""}
                   width={800}
                   height={600}
                   className="rounded-2xl"
                 />
+                {image.caption && <figcaption className="mt-2 text-sm text-muted">{image.caption}</figcaption>}
+                </figure>
               ),
           )}
         </div>
       )}
       <SplitSection
         title="Wir freuen uns auf dich!"
-        text="Die Kontaktdaten des Projektteams werden hier nach Freigabe ergänzt. Der Kontaktbereich zeigt bereits das vorgesehene Formular."
+        text="Bei Fragen zu unseren Projekten und Angeboten erreichst du uns über den Kontaktbereich."
         image={project.image}
         alt={project.alt}
         href="/kontakt"

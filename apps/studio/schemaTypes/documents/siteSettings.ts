@@ -6,7 +6,7 @@ export const siteSettings = defineType({
   fields: [
     defineField({
       name: "organisationName",
-      title: "Anahitasname",
+      title: "Vereinsname",
       type: "string",
       validation: (r) => r.required(),
     }),
@@ -33,7 +33,7 @@ export const siteSettings = defineType({
     }),
     defineField({
       name: "navigation",
-      title: "Anahita-Menü",
+      title: "Vereinsmenü",
       type: "array",
       of: [defineArrayMember({ type: "link" })],
     }),
@@ -80,6 +80,12 @@ export const siteSettings = defineType({
         defineField({ name: "iban", title: "IBAN", type: "string" }),
         defineField({ name: "bic", title: "BIC", type: "string" }),
         defineField({ name: "bank", title: "Bank", type: "string" }),
+        defineField({
+          name: "betterplaceUrl",
+          title: "Betterplace-Spendenlink",
+          type: "url",
+          validation: (r) => r.uri({scheme: ["https"]}),
+        }),
         defineField({
           name: "paypalUrl",
           title: "PayPal-Spendenlink",

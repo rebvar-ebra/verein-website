@@ -14,6 +14,7 @@ export function PageSections({ sections }: { sections: CmsPage["sections"] }) {
           text={section.text}
           image={imageUrl(section.image)}
           alt={section.image?.alt || ""}
+          caption={section.image?.caption || undefined}
           href={section.link?.href}
           label={section.link?.label}
           reverse={section.reverse ?? i % 2 === 1}
@@ -69,6 +70,7 @@ export function ActionCards({
   );
 }
 export function PageFaqs({ faqs }: { faqs: CmsPage["faqs"] }) {
+  if (!faqs.length) return null;
   return (
     <section className="shell section-space">
       <h2 className="mb-8 text-center">Was wir oft gefragt werden</h2>

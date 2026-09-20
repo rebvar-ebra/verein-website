@@ -3,10 +3,12 @@ export function PageBanner({
   image = "/images/friends.jpg",
   alt = "Freunde stehen gemeinsam vor einer Berglandschaft",
   compact = false,
+  caption,
 }: {
   image?: string;
   alt?: string;
   compact?: boolean;
+  caption?: string;
 }) {
   return (
     <div
@@ -21,6 +23,7 @@ export function PageBanner({
         className="object-cover object-center"
       />
       <div className="absolute inset-0 bg-forest/10" />
+      {caption && <p className="absolute bottom-2 right-2 rounded bg-white/90 px-2 py-1 text-xs text-ink">{caption}</p>}
     </div>
   );
 }
