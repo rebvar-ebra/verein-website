@@ -35,6 +35,7 @@ Miteinander.<br />Füreinander.
             links: [
               { label: "Datenschutz", href: "/datenschutz" },
               { label: "Impressum", href: "/impressum" },
+              { label: "Satzung", href: "/satzung" },
             ],
           },
         ].map((group) => (

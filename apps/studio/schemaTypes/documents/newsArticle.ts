@@ -4,6 +4,7 @@ export const newsArticle = defineType({
   title: "News",
   type: "document",
   fields: [
+    defineField({name: "archived", title: "Archiviert", type: "boolean", initialValue: false}),
     defineField({
       name: "title",
       title: "Titel",

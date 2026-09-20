@@ -1,3 +1,4 @@
+import { editorialPage } from "./documents/page";
 import { objects } from "./objects";
 import { project } from "./documents/project";
 import { newsArticle } from "./documents/newsArticle";
@@ -27,4 +28,5 @@ export const schemaTypes = [
   imprintPage,
   privacyPage,
   siteSettings,
+  editorialPage("statutesPage", "Satzung"),
 ];

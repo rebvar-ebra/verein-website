@@ -5,6 +5,7 @@ type Details = {
   bic?: string | null;
   bank?: string | null;
   accountHolder?: string | null;
+  betterplaceUrl?: string | null;
   paypalUrl?: string | null;
 };
 export function DonationOptions({ details }: { details: Details }) {
@@ -60,9 +61,14 @@ export function DonationOptions({ details }: { details: Details }) {
           </p>
         </section>
         <section className="rounded-2xl border border-divider bg-paper p-6 md:p-8">
-          <h2>Per PayPal</h2>
-          <p className="my-5">Unterstütze unsere Arbeit über PayPal.</p>
-          {details.paypalUrl ? (
+          <h2>{details.betterplaceUrl ? "Online über Betterplace" : "Per PayPal"}</h2>
+          <p className="my-5">{details.betterplaceUrl ? "Unterstütze DALIA über unsere Spendenseite bei Betterplace." : "Unterstütze unsere Arbeit über PayPal."}</p>
+          {details.betterplaceUrl ? (
+            <>
+              <a className="button button-orange" href={details.betterplaceUrl} target="_blank" rel="noopener noreferrer">Zu Betterplace →</a>
+              <p className="mt-4 text-sm text-muted">Wähle deinen Betrag von {amount} € auf Betterplace erneut aus. Dort legst du die Zahlungsart fest. Der Link öffnet einen neuen Tab.</p>
+            </>
+          ) : details.paypalUrl ? (
             <>
               <a
                 className="button button-orange"

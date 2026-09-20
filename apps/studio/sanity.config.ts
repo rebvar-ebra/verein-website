@@ -15,6 +15,7 @@ const singletons = [
   "contactPage",
   "imprintPage",
   "privacyPage",
+  "statutesPage",
 ];
 export default defineConfig({
   name: "Anahita",

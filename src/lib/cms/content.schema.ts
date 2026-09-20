@@ -78,6 +78,9 @@ export const seoSchema = z
   .nullish();
 export const linkSchema = z.object({ label: z.string(), href: safeHref });
 export const teamSchema = z.object({
+  bio: bodySchema.default([]),
+  phone: z.string().nullish(),
+  languages: z.string().nullish(),
   _id: z.string(),
   name: z.string(),
   role: z.string().nullish(),
@@ -176,6 +179,7 @@ export const settingsSchema = z.object({
       iban: z.string().nullish(),
       bic: z.string().nullish(),
       bank: z.string().nullish(),
+      betterplaceUrl: z.string().url().refine((v) => { try { const url = new URL(v); return url.protocol === "https:" && url.hostname === "www.betterplace.org"; } catch { return false; } }).nullish(),
       paypalUrl: z
         .url()
         .refine((value) => {

@@ -5,6 +5,7 @@ export function SplitSection({
   text,
   image,
   alt,
+  caption,
   href,
   label,
   reverse = false,
@@ -14,6 +15,7 @@ export function SplitSection({
   text: string;
   image: string;
   alt: string;
+  caption?: string;
   href?: string;
   label?: string;
   reverse?: boolean;
@@ -32,12 +34,13 @@ export function SplitSection({
             sizes="(max-width:768px) 95vw, 50vw"
             className="object-cover"
           />
+          {caption && <p className="absolute bottom-2 right-2 rounded bg-white/90 px-2 py-1 text-xs text-ink">{caption}</p>}
         </div>
         <div className={reverse ? "md:order-1" : ""}>
           <h2 className="text-3xl font-medium tracking-tight md:text-4xl">
             {title}
           </h2>
-          <p className="mt-5 text-base leading-7 text-ink">{text}</p>
+          <p className="mt-5 whitespace-pre-line text-base leading-7 text-ink">{text}</p>
           {children}
           {href && label && (
             <Link href={href} className="button button-orange mt-6">
