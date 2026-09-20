@@ -8,21 +8,20 @@ export function Footer() {
         <div>
           <Link href="/" className="flex items-center gap-2 text-3xl font-bold">
             <Image
-              src="/brand/anahita-white.webp"
-              alt="Anahita"
+              src="/brand/neuer-tag.png"
+              alt="Neuer Tag"
               width={400}
               height={160}
-              className="h-auto w-48"
+              className="h-auto w-48 brightness-0 invert"
             />
           </Link>
           <p className="mt-4 text-sm text-cream/70">
-Interkulturelles Frauenzentrum  <br /> für Teilhabe & Bildung           
-            Füreinander.
+Miteinander.<br />Füreinander.
           </p>
         </div>
         {[
           { title: "Projekte", links: projectLinks.slice(1) },
-          { title: "Anahita", links: clubLinks },
+          { title: "Neuer Tag", links: clubLinks },
           {
             title: "Unterstützen",
             links: [

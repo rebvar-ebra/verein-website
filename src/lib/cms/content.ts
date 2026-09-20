@@ -31,6 +31,7 @@ export const getProjects = cache(async () => {
     return previewProjects.map((p) => ({
       ...p,
       _id: p.id,
+      logo: null,
       content: paragraphs([p.detail]),
       startDate: null,
       target: null,

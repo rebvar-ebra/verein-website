@@ -1,3 +1,4 @@
+import { imageUrl } from "@/lib/cms/sanity.image";
 import Image from "next/image";
 import Link from "next/link";
 import { getProjects } from "@/lib/cms/content";
@@ -10,7 +11,7 @@ export async function ProjectGrid() {
       </p>
     );
   return (
-    <div className="grid items-start gap-6 md:grid-cols-3">
+    <div className="grid items-start gap-6 md:grid-cols-2">
       {projects.map((project) => (
         <article
           key={project.id}
@@ -23,11 +24,11 @@ export async function ProjectGrid() {
             className="relative block overflow-hidden rounded-2xl aspect-[1.8]"
           >
             <Image
-              src={project.image}
+              src={project.logo ? imageUrl(project.logo, 1000) : project.image}
               alt=""
               fill
               sizes="(max-width:768px) 90vw, 30vw"
-              className="object-cover"
+              className={project.logo ? "object-contain bg-white p-6" : "object-cover"}
             />
           </Link>
           <div className="p-6 text-center">

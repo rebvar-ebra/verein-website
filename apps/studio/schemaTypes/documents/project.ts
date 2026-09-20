@@ -4,6 +4,8 @@ export const project = defineType({
   title: "Projekt",
   type: "document",
   fields: [
+    defineField({name: "logo", title: "Projektlogo", type: "imageWithCaption"}),
+    defineField({name: "archived", title: "Archiviert (nicht auf der Website anzeigen)", type: "boolean", initialValue: false}),
     defineField({
       name: "faqs",
       title: "Häufige Fragen",

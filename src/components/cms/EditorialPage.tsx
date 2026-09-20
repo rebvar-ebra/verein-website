@@ -221,7 +221,7 @@ export async function EditorialPage({
         {sections}
         <CrossLink
           href="/mitglied-werden"
-          title="Oder tritt unserem Anahita bei"
+          title="Oder werde Mitglied bei Neuer Tag"
           label="Mitglied werden"
         />
         {faqs}
