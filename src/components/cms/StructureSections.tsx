@@ -35,31 +35,38 @@ export function ActionCards({
     <section className="shell section-space">
       <h2 className="mb-10 text-center">{title}</h2>
       <div
-        className={`mx-auto grid max-w-4xl gap-6 ${actions.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-3"}`}
+        className={`mx-auto grid gap-6 ${actions.length === 2 ? "max-w-4xl sm:grid-cols-2" : "max-w-6xl sm:grid-cols-2 lg:grid-cols-3"}`}
       >
         {actions.map((action, i) => (
           <article
             key={i}
-            className="flex h-full flex-col overflow-hidden rounded-2xl border border-divider bg-white/50"
+            className="row-span-3 grid grid-rows-subgrid gap-0 overflow-hidden rounded-2xl border border-divider bg-white/50"
           >
-            {action.image && (
-              <Image
-                src={imageUrl(action.image, 800)}
-                alt={action.image.alt || ""}
-                width={800}
-                height={400}
-                className="aspect-[2/1] w-full shrink-0 object-cover"
-              />
-            )}
-            <div className="flex flex-1 flex-col p-7 text-center">
+            <div>
+              {action.image && (
+                <Image
+                  src={imageUrl(action.image, 800)}
+                  alt={action.image.alt || ""}
+                  width={800}
+                  height={400}
+                  className="aspect-[2/1] w-full shrink-0 object-cover"
+                />
+              )}
+            </div>
+            <div className="px-7 pt-7 text-center">
               <h3>{action.title}</h3>
               <p className="my-4">{action.text}</p>
+            </div>
+            <div className="flex px-7 pb-7">
               {action.link && (
                 <Link
-                  className="button button-outline mt-auto w-full"
+                  className="button button-outline w-full gap-2 px-3"
                   href={action.link.href}
                 >
-                  {action.link.label} →
+                  <span>{action.link.label}</span>
+                  <span aria-hidden="true" className="shrink-0">
+                    →
+                  </span>
                 </Link>
               )}
             </div>
