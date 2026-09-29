@@ -1,6 +1,6 @@
 import { PageFaqs, PageSponsors } from "@/components/cms/StructureSections";
 import Image from "next/image";
-import { imageUrl } from "@/lib/cms/sanity.image";
+import { imageUrl, imageDownloadUrl } from "@/lib/cms/sanity.image";
 import { notFound } from "next/navigation";
 import { getProjects } from "@/lib/cms/content";
 import { RichText } from "@/components/cms/RichText";
@@ -38,6 +38,9 @@ export default async function Page({
   const projects = await getProjects();
   const project = projects.find((p) => p.id === slug);
   if (!project) notFound();
+  const offersDownload = project.id === "dalia"
+    ? imageDownloadUrl(project.gallery[0])
+    : null;
 
   return (
     <main id="main-content">
@@ -84,27 +87,14 @@ export default async function Page({
             {project.schedule ||
               "Termine und ein freigegebener Wochenplan sind noch nicht verfügbar."}
           </p>
+          {offersDownload && (
+            <a href={offersDownload} download className="button align-center button-orange mt-6">
+              Unsere Angebote herunterladen <span aria-hidden="true">↓</span>
+            </a>
+          )}
         </PreviewPanel>
       </div>
-      {project.gallery.length > 0 && (
-        <div className="shell grid gap-6 pb-16 md:grid-cols-2">
-          {project.gallery.map(
-            (image, i) =>
-              image && (
-                <figure key={i}>
-                <Image
-                  src={imageUrl(image)}
-                  alt={image.alt || ""}
-                  width={800}
-                  height={600}
-                  className="rounded-2xl"
-                />
-                {image.caption && <figcaption className="mt-2 text-sm text-muted">{image.caption}</figcaption>}
-                </figure>
-              ),
-          )}
-        </div>
-      )}
+
       <SplitSection
         title="Wir freuen uns auf dich!"
         text="Bei Fragen zu unseren Projekten und Angeboten erreichst du uns über den Kontaktbereich."

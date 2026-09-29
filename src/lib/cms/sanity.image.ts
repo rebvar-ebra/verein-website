@@ -11,3 +11,12 @@ export function imageUrl(image: CmsImage, width = 1600) {
     .auto("format")
     .url();
 }
+
+export function imageDownloadUrl(image: CmsImage) {
+  const config = readCmsConfig(process.env);
+  if (!image?.asset || !config) return null;
+  return createImageUrlBuilder(config)
+    .image(image.asset)
+    .forceDownload(`Unsere-Angebote.${image.asset._ref.split("-").at(-1)}`)
+    .url();
+}
