@@ -1,3 +1,4 @@
+import { QuickExitButton } from "@/components/help/QuickExitButton";
 import { getSettings, getProjects } from "@/lib/cms/content";
 import { cmsEnabled } from "@/lib/cms/sanity.client";
 import { ContactBar } from "@/components/layout/ContactBar/ContactBar";
@@ -28,7 +29,10 @@ export default async function WebsiteLayout({
       />
       <ContactBar />
       {children}
-      <Footer />
+      <div className="pb-24 bg-forest">
+        <Footer />
+      </div>
+      <QuickExitButton url={settings?.quickExitUrl} />
     </>
   );
 }
