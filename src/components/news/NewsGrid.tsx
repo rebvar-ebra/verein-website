@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { NewsImage } from "./NewsImage";
 import { getArticles } from "@/lib/cms/content";
 export async function NewsGrid({
   excludeSlug,
@@ -21,15 +21,7 @@ export async function NewsGrid({
           key={article.slug}
           className="overflow-hidden rounded-2xl border border-forest/20 bg-white/50"
         >
-          <div className="relative overflow-hidden rounded-2xl aspect-[1.8]">
-            <Image
-              src={article.image}
-              alt={article.alt}
-              fill
-              sizes="(max-width:768px) 90vw, 30vw"
-              className="object-cover"
-            />
-          </div>
+          <NewsImage src={article.image} alt={article.alt} />
           <div className="p-6">
             <p className="eyebrow mb-3 text-olive">
               {article.category}

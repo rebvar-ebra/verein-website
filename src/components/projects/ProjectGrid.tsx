@@ -39,7 +39,7 @@ export async function ProjectGrid() {
             </p>
             <Link
               href={`/projekte/${project.id}`}
-              className="button button-outline mt-auto w-full"
+              className="button button-orange  mt-auto w-full"
               aria-label={`${project.title} – zum Projekt`}
             >
               Zum Projekt →
