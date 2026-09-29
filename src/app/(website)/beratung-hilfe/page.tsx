@@ -8,7 +8,6 @@ import {
   PageIntro,
   SplitSection,
 } from "@/components/sections/WireframeSections";
-import { QuickExitButton } from "@/components/help/QuickExitButton";
 export async function generateMetadata() {
   return pageMetadata("helpPage", { title: "Beratung & Hilfe" });
 }
@@ -17,7 +16,6 @@ export default async function Page() {
   if (cmsEnabled)
     return (
       <EditorialPage type="helpPage">
-        <QuickExitButton url={settings?.quickExitUrl} />
         {settings?.emergencyPhone && (
           <a
             className="button button-orange"
@@ -36,7 +34,6 @@ export default async function Page() {
     );
   return (
     <main id="main-content">
-      <QuickExitButton />
       <div className="border-b border-forest/15 bg-sage/50">
         <div className="shell flex flex-wrap items-center gap-4 py-5 text-sm">
           <strong>Beratung & Hilfe</strong>
