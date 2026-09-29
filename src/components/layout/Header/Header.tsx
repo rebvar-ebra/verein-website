@@ -66,7 +66,7 @@ export function Header({
           </Link>
           <Link
             href="/spenden"
-            className="button button-orange hidden sm:inline-flex"
+            className="button button-orange hidden px-[22px] py-[10px] sm:inline-flex"
           >
             Spenden{" "}
             <span aria-hidden="true">

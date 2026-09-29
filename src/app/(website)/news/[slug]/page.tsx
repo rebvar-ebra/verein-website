@@ -1,9 +1,10 @@
+import { NewsImage } from "@/components/news/NewsImage";
 import { NewsGrid } from "@/components/news/NewsGrid";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getArticles } from "@/lib/cms/content";
 import { RichText } from "@/components/cms/RichText";
-import { PageBanner, PageIntro } from "@/components/sections/WireframeSections";
+import { PageIntro } from "@/components/sections/WireframeSections";
 export async function generateStaticParams() {
   const articles = await getArticles();
   return articles.map((article) => ({ slug: article.slug }));
@@ -34,7 +35,7 @@ export default async function Page({
     <main id="main-content">
       <article>
         <div className="shell pt-10">
-          <PageBanner image={article.image} alt={article.alt} compact />
+          <NewsImage src={article.image} alt={article.alt} featured />
         </div>
         <PageIntro
           title={article.title}
