@@ -60,7 +60,7 @@ export function ActionCards({
             <div className="flex px-7 pb-7">
               {action.link && (
                 <Link
-                  className="button button-outline w-full gap-2 px-3"
+                  className="button button-orange w-full gap-2 px-3"
                   href={action.link.href}
                 >
                   <span>{action.link.label}</span>
