@@ -122,21 +122,28 @@ export function PageSponsors({
   return (
     <section className="shell section-space text-center">
       <h2>{title}</h2>
-      <div className="mx-auto mt-10 flex max-w-4xl flex-wrap items-center justify-center gap-8">
-        {images.map(
-          (image, i) =>
-            image && (
-              <Image
-                key={i}
-                src={imageUrl(image, 1000)}
-                alt={image.alt || ""}
-                width={400}
-                height={160}
-                sizes="(max-width: 640px) 90vw, 400px"
-                className="h-40 w-full max-w-sm rounded-none object-contain"
-              />
-            ),
-        )}
+      <div
+        className="mx-auto mt-10 max-w-6xl overflow-x-auto pb-4"
+        role="region"
+        aria-label={title}
+        tabIndex={0}
+      >
+        <div className="flex w-max min-w-full items-center justify-center gap-6">
+          {images.map(
+            (image, i) =>
+              image && (
+                <Image
+                  key={i}
+                  src={imageUrl(image, 1000)}
+                  alt={image.alt || ""}
+                  width={288}
+                  height={144}
+                  sizes="(max-width: 768px) 240px, 288px"
+                  className="h-32 w-60 shrink-0 rounded-none object-contain md:h-36 md:w-72"
+                />
+              ),
+          )}
+        </div>
       </div>
     </section>
   );
