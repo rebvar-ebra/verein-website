@@ -1,3 +1,4 @@
+import { jobPosting } from "./documents/jobPosting";
 import { editorialPage } from "./documents/page";
 import { objects } from "./objects";
 import { project } from "./documents/project";
@@ -15,6 +16,7 @@ import { privacyPage } from "./documents/privacyPage";
 import { siteSettings } from "./documents/siteSettings";
 export const schemaTypes = [
   ...objects,
+  jobPosting,
   project,
   newsArticle,
   teamMember,

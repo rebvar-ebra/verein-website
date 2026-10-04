@@ -1,4 +1,5 @@
-import { ApplicationPreview } from "@/components/forms/ApplicationForm/ApplicationPreview";
+import { JobList } from "@/components/jobs/JobList";
+import { getJobs } from "@/features/jobs/jobs";
 import Link from "next/link";
 import { getPage, getSettings, getArticles } from "@/lib/cms/content";
 import { imageUrl } from "@/lib/cms/sanity.image";
@@ -247,21 +248,8 @@ export async function EditorialPage({
           {stats}
         </section>
         {body}
-        <ActionCards
-          title="Klingt interessant? Unsere offenen Stellen:"
-          actions={page.actions}
-        />
-        {!page.actions.length && (
-          <p className="shell py-8 text-center text-muted">
-            Aktuell sind keine Stellen veröffentlicht.
-          </p>
-        )}
+        <JobList jobs={await getJobs()} />
         {sections}
-        <ApplicationPreview
-          roles={page.actions
-            .map((action) => action.title || "")
-            .filter(Boolean)}
-        />
         {faqs}
       </>
     );
