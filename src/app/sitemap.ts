@@ -10,7 +10,7 @@ const publicRoutes = [
   "/mitmachen", "/beratung-hilfe", "/kontakt", "/impressum", "/datenschutz", "/satzung",
 ];
 const entriesSchema = z.array(z.object({
-  _type: z.enum(["project", "newsArticle"]),
+  _type: z.enum(["project", "newsArticle", "jobPosting"]),
   slug: z.string().min(1),
   _updatedAt: z.iso.datetime(),
 }));
@@ -19,13 +19,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = siteUrl();
   // Match the public listings, excluding drafts, archived and scheduled content.
   const entries = await fetchCms(
-    `*[_type in ["project", "newsArticle"] && !(_id in path("drafts.**")) && archived != true && defined(slug.current) && defined(publishedAt) && dateTime(publishedAt) <= dateTime(now())]{_type,"slug":slug.current,_updatedAt}`,
+    `*[_type in ["project", "newsArticle", "jobPosting"] && !(_id in path("drafts.**")) && archived != true && defined(slug.current) && defined(publishedAt) && dateTime(publishedAt) <= dateTime(now())]{_type,"slug":slug.current,_updatedAt}`,
     entriesSchema,
   );
   return [
     ...publicRoutes.map(path => ({url: `${base}${path || "/"}`})),
     ...entries.map(entry => ({
-      url: `${base}/${entry._type === "project" ? "projekte" : "news"}/${encodeURIComponent(entry.slug)}`,
+      url: `${base}/${entry._type === "project" ? "projekte" : entry._type === "jobPosting" ? "mitmachen" : "news"}/${encodeURIComponent(entry.slug)}`,
       lastModified: entry._updatedAt,
     })),
   ];

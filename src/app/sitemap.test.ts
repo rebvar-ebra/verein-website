@@ -22,3 +22,8 @@ it("keeps static pages with an empty CMS and propagates outages instead of cachi
   expect(await sitemap()).toHaveLength(12);
   await expect(sitemap()).rejects.toThrow("CMS unavailable");
 });
+it("includes published job detail URLs in the sitemap", async () => {
+  vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://example.org");
+  vi.mocked(fetchCms).mockResolvedValue([{_type: "jobPosting", slug: "beratung", _updatedAt: "2026-10-04T12:00:00Z"}]);
+  expect(await sitemap()).toContainEqual({url: "https://example.org/mitmachen/beratung", lastModified: "2026-10-04T12:00:00Z"});
+});
