@@ -4,6 +4,7 @@ import { imageUrl, imageDownloadUrl } from "@/lib/cms/sanity.image";
 import { notFound } from "next/navigation";
 import { getProjects } from "@/lib/cms/content";
 import { RichText } from "@/components/cms/RichText";
+import { ProjectLocations } from "@/components/projects/ProjectLocations";
 import {
   PageBanner,
   PageIntro,
@@ -77,10 +78,7 @@ export default async function Page({
       )}
       <div className="shell grid gap-6 pb-10 md:grid-cols-2">
         <PreviewPanel title="Wo wir sind">
-          <p className="whitespace-pre-line">
-            {project.address ||
-              "Die Adresse wird ergänzt, sobald der Projektstandort bestätigt ist."}
-          </p>
+          <ProjectLocations address={project.address} />
         </PreviewPanel>
         <PreviewPanel title="Was es gibt">
           <p>
