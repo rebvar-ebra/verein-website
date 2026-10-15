@@ -7,7 +7,6 @@ export function NewsSection() {
     >
       <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr]">
         <div>
-          <p className="eyebrow mb-4">Einblicke & Geschichten</p>
           <h2 className="section-title">
             Was gibt’s
             <br />
