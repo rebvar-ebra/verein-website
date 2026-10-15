@@ -18,7 +18,7 @@ export default function Page() {
     <main id="main-content">
       <PageBanner />
       <PageIntro
-        title="Über uns"
+        title="Verein"
         text={homepage.about}
         eyebrow="Das ist Neuer Tag"
       />

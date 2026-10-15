@@ -55,7 +55,7 @@ Miteinander.<br />Füreinander.
       </div>
       <div className="shell border-t border-cream/15 py-5 text-xs text-cream/70">
         built by <Link href="https://rebvar.xyz" className="text-cream/80 hover:text-white hover:underline">
-          Rebvar Ebrahimi
+          Rebvar Ebrahimi {new Date().getFullYear()}
         </Link>
       </div>
     </footer>
