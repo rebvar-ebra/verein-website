@@ -81,5 +81,4 @@ export const clubLinks = [
 export const projectLinks = [
   { label: "Anahita", href: "/projekte/anahita" },
   { label: "DALIA", href: "/projekte/dalia" },
-  { label: "Alle Projekte", href: "/projekte" },
 ];
