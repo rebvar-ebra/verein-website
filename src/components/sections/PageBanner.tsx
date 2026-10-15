@@ -14,14 +14,14 @@ export function PageBanner({
 }) {
   return (
     <div
-      className={`relative overflow-hidden rounded-2xl bg-paper ${compact ? "mx-auto aspect-[3/1] max-w-5xl" : focus === "faces" ? "aspect-[16/9] sm:aspect-[2/1]" : "h-60 sm:h-80 lg:h-[28rem]"}`}
+      className={`relative overflow-hidden rounded-2xl bg-paper ${compact ? "mx-auto aspect-[3/1] max-w-5xl" : focus === "faces" ? "h-60 sm:h-80 lg:h-[clamp(28rem,35vw,42rem)]" : "h-60 sm:h-80 lg:h-[28rem]"}`}
     >
       <Image
         src={image}
         alt={alt}
         fill
         priority
-        sizes={focus === "faces" ? "(min-width: 1280px) 1232px, calc(100vw - 48px)" : "100vw"}
+        sizes="100vw"
         className={`object-cover ${focus === "faces" ? "object-[center_20%]" : "object-center"}`}
       />
       <div className="absolute inset-0 bg-forest/10" />

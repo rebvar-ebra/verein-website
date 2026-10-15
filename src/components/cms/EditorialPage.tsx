@@ -275,7 +275,7 @@ export async function EditorialPage({
         </div>
       )}
       {page.hero?.image && (
-        <div className={type === "homepage" ? "shell pt-6 sm:pt-8" : "shell pt-10"}>
+        <div className={type === "homepage" ? "" : "shell pt-10"}>
           <PageBanner
             image={imageUrl(page.hero.image)}
             alt={page.hero.image.alt || ""}
