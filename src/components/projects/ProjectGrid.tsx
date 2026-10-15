@@ -34,7 +34,7 @@ export async function ProjectGrid() {
           <div className="flex flex-1 flex-col p-6 text-center">
             <p className="eyebrow mb-3 text-olive">{project.category}</p>
             <h3 className="text-xl font-medium">{project.title}</h3>
-            <p className="mb-6 mt-3 text-sm leading-6 text-muted">
+            <p className="mb-6 mt-3 line-clamp-3 text-sm leading-6 text-muted">
               {project.text}
             </p>
             <Link
