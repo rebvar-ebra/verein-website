@@ -55,11 +55,7 @@ export default async function Page({
       <PageIntro
         title={project.title}
         text={project.isPreview ? project.detail : project.text}
-        eyebrow={
-          project.isPreview
-            ? `${project.category} · Projektentwurf`
-            : project.category
-        }
+        eyebrow={project.isPreview ? "Projektentwurf" : undefined}
       />
       {[project.startDate, project.target, project.achieved].some(Boolean) && <StatsSection
         values={[project.startDate, project.target, project.achieved]}
