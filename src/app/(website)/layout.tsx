@@ -4,6 +4,7 @@ import { cmsEnabled } from "@/lib/cms/sanity.client";
 import { ContactBar } from "@/components/layout/ContactBar/ContactBar";
 import { Header } from "@/components/layout/Header/Header";
 import { Footer } from "@/components/layout/Footer/Footer";
+import { buildHeaderNavigation } from "@/components/layout/Header/navigation";
 export default async function WebsiteLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -23,9 +24,11 @@ export default async function WebsiteLayout({
         Zum Inhalt springen
       </a>
       <Header
-        name={settings?.organisationName}
-        navigation={cmsEnabled ? (settings?.navigation ?? []) : undefined}
-        projects={projects}
+        menus={buildHeaderNavigation({
+          projects,
+          legacyNavigation: settings?.navigation?.length ? settings.navigation : undefined,
+          headerNavigation: settings?.headerNavigation,
+        })}
       />
       <ContactBar />
       {children}

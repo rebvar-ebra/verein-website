@@ -24,6 +24,7 @@ export default function Page() {
       <PageIntro
         title="Du willst ein Teil unseres Teams werden?"
         text="Zeit, Ideen und Fähigkeiten einbringen. Hier entsteht der Überblick über ehrenamtliches Engagement und Stellenangebote bei Neuer Tag."
+        eyebrowLogo="/brand/neuer-tag-caption.webp"
       />
       <section className="shell pb-16 text-center">
         <h2 className="text-3xl font-medium">Was du erwarten kannst</h2>

@@ -73,13 +73,13 @@ export const faqs = [
   },
 ];
 export const clubLinks = [
-  { label: "Über uns", href: "/ueber-uns" },
+  { label: "Verein", href: "/ueber-uns" },
   { label: "Stellenangebote & Mitmachen", href: "/mitmachen" },
   { label: "Beratung & Hilfe", href: "/beratung-hilfe" },
   { label: "Kontakt", href: "/kontakt" },
 ];
 export const projectLinks = [
-  { label: "Alle Projekte", href: "/projekte" },
   { label: "Anahita", href: "/projekte/anahita" },
   { label: "DALIA", href: "/projekte/dalia" },
+  { label: "Alle Projekte", href: "/projekte" },
 ];

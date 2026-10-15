@@ -20,8 +20,8 @@ Miteinander.<br />Füreinander.
           </p>
         </div>
         {[
-          { title: "Projekte", links: projectLinks.slice(1) },
-          { title: "Neuer Tag", links: clubLinks },
+          { title: "Projekte", links: projectLinks.filter((link) => link.href !== "/projekte") },
+          { title: "Über uns", links: clubLinks },
           {
             title: "Unterstützen",
             links: [

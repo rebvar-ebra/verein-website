@@ -3,9 +3,11 @@ import Link from "next/link";
 import { useId, useRef, useState } from "react";
 export function NavigationDropdown({
   label,
+  href,
   links,
 }: {
   label: string;
+  href?: string;
   links: { label: string; href: string }[];
 }) {
   const [open, setOpen] = useState(false);
@@ -46,9 +48,14 @@ export function NavigationDropdown({
         hidden={!open}
         className="absolute left-0 top-full z-30 min-w-60 border border-forest/15 bg-cream p-2 shadow-lg"
       >
+        {href && (
+          <Link href={href} onClick={() => setOpen(false)} className="block px-4 py-3 text-sm hover:bg-sage/50">
+            {label} – Übersicht
+          </Link>
+        )}
         {links.map((link) => (
           <Link
-            key={link.href}
+            key={`${link.href}-${link.label}`}
             href={link.href}
             onClick={() => setOpen(false)}
             className="block px-4 py-3 text-sm hover:bg-sage/50"

@@ -281,6 +281,7 @@ export async function EditorialPage({
             alt={page.hero.image.alt || ""}
             caption={page.hero.image.caption || undefined}
             compact={type !== "homepage"}
+            focus={type === "homepage" ? "faces" : "center"}
           />
         </div>
       )}
@@ -288,6 +289,7 @@ export async function EditorialPage({
         title={page.hero?.title || page.title}
         text={page.hero?.text || page.introduction}
         eyebrow={page.hero?.eyebrow || ""}
+        eyebrowLogo={type === "applicationPage" ? (settings?.logo ? imageUrl(settings.logo, 500) : "/brand/neuer-tag-caption.webp") : undefined}
       />
       {content}
     </main>

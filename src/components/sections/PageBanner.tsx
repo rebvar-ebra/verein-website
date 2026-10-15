@@ -4,15 +4,17 @@ export function PageBanner({
   alt = "Freunde stehen gemeinsam vor einer Berglandschaft",
   compact = false,
   caption,
+  focus = "center",
 }: {
   image?: string;
   alt?: string;
   compact?: boolean;
   caption?: string;
+  focus?: "center" | "faces";
 }) {
   return (
     <div
-      className={`relative overflow-hidden rounded-2xl bg-paper ${compact ? "mx-auto aspect-[3/1] max-w-5xl" : "h-60 sm:h-80 lg:h-[28rem]"}`}
+      className={`relative overflow-hidden rounded-2xl bg-paper ${compact ? "mx-auto aspect-[3/1] max-w-5xl" : "h-60 sm:h-80 lg:h-[clamp(28rem,35vw,42rem)]"}`}
     >
       <Image
         src={image}
@@ -20,7 +22,7 @@ export function PageBanner({
         fill
         priority
         sizes="100vw"
-        className="object-cover object-center"
+        className={`object-cover ${focus === "faces" ? "object-[center_20%]" : "object-center"}`}
       />
       <div className="absolute inset-0 bg-forest/10" />
       {caption && <p className="absolute bottom-2 right-2 rounded bg-white/90 px-2 py-1 text-xs text-ink">{caption}</p>}

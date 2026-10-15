@@ -33,9 +33,17 @@ export const siteSettings = defineType({
     }),
     defineField({
       name: "navigation",
-      title: "menü",
+      title: "Bisherige Links unter „Über uns“",
+      description: "Wird nur verwendet, solange das neue Hauptmenü leer ist.",
       type: "array",
       of: [defineArrayMember({ type: "link" })],
+    }),
+    defineField({
+      name: "headerNavigation",
+      title: "Hauptmenü",
+      description: "Hier Links und Unterpunkte hinzufügen und per Ziehen sortieren. Sobald dieses Feld gefüllt ist, ersetzt es das bisherige Menü.",
+      type: "array",
+      of: [defineArrayMember({ type: "navigationItem" })],
     }),
     defineField({
       name: "footerNavigation",

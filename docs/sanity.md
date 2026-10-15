@@ -16,7 +16,9 @@ Without website environment overrides, the website connects to the public projec
 
 ## Editing
 
-Page documents provide hero images, introduction, rich text, alternating image/text sections, statistics, team references, action links and FAQs. Projects and news have independent detail routes. Site settings supply the organization name and club navigation. The footer uses its original static content and layout, independently of Sanity. Image alternatives and captions are editable. Studio singletons use fixed document IDs matching their schema names.
+Page documents provide hero images, introduction, rich text, alternating image/text sections, statistics, team references, action links and FAQs. Projects and news have independent detail routes. Site settings supply the organization name and the header menu. Image alternatives and captions are editable. Studio singletons use fixed document IDs matching their schema names.
+
+To edit the header, open **Website-Einstellungen → Hauptmenü**. Add a **Menüeintrag** with a label and a target for a direct link. For a dropdown, add **Unterpunkte**; an optional target on the parent appears as an overview link inside the dropdown. Drag entries and sublinks into the desired order, then publish. The same structure appears on desktop and mobile. Until **Hauptmenü** has entries, the existing project/about/news navigation remains visible; the older **Bisherige Links unter „Über uns“** field supplies its about submenu. The membership and donation actions remain separate fixed links. The footer uses its original static content and layout, independently of Sanity.
 
 The website remains marked as a design preview and excluded from indexing. Contact submission, membership, donations and payment processing are separate backend work; publishing CMS content does not activate them. Legal content must be supplied or approved by the organization.
 
