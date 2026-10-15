@@ -29,9 +29,8 @@ test("desktop project dropdown exposes routes and closes on Escape", () => {
   const button = screen.getByRole("button", { name: "Projekte" });
   fireEvent.click(button);
   expect(button.getAttribute("aria-expanded")).toBe("true");
-  expect(screen.queryByRole("link", { name: "Alle Projekte" })).toBeNull();
-  const link = screen.getByRole("link", { name: "Anahita" });
-  expect(link.getAttribute("href")).toBe("/projekte/anahita");
+  const link = screen.getByRole("link", { name: "Alle Projekte" });
+  expect(link.getAttribute("href")).toBe("/projekte");
   fireEvent.keyDown(link, { key: "Escape" });
   expect(button.getAttribute("aria-expanded")).toBe("false");
   expect(document.activeElement).toBe(button);

@@ -13,6 +13,7 @@ describe("buildHeaderNavigation", () => {
     expect(menus[0].children?.map((link) => link.label)).toEqual([
       "Anahita",
       "DALIA",
+      "Alle Projekte",
     ]);
     expect(menus[1]).toMatchObject({
       label: "Über uns",

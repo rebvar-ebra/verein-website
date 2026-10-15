@@ -28,7 +28,10 @@ export function buildHeaderNavigation({
   return [
     {
       label: "Projekte",
-      children: sortedProjects,
+      children: [
+        ...sortedProjects,
+        { label: "Alle Projekte", href: "/projekte" },
+      ],
     },
     { label: "Über uns", children: aboutLinks },
     { label: "News", href: "/news" },
