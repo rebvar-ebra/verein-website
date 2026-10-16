@@ -49,5 +49,3 @@ next-env.d.ts
 /apps/studio/schema.json
 AGENTS.md
 CLAUDE.md
-.env.example
-.env.local
