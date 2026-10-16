@@ -1,5 +1,5 @@
 import { z } from "zod";
-/** Local preview validation; reuse server-side when real submission is implemented. */
+/** Shared client and server validation for contact submissions. */
 export const contactSchema = z.object({
   name: z
     .string()
@@ -15,6 +15,7 @@ export const contactSchema = z.object({
     .string()
     .trim()
     .min(3, "Bitte gib einen Betreff ein (mindestens 3 Zeichen).")
+    .regex(/^[^\r\n]+$/, "Der Betreff darf keinen Zeilenumbruch enthalten.")
     .max(150, "Bitte verwende höchstens 150 Zeichen."),
   message: z
     .string()

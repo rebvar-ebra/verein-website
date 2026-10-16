@@ -1,5 +1,11 @@
 import { afterEach, expect, test, vi } from "vitest";
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import { ContactForm } from "./ContactForm";
 afterEach(() => {
   cleanup();
@@ -7,7 +13,7 @@ afterEach(() => {
 });
 test("empty fields show associated errors and focus the first invalid field", () => {
   render(<ContactForm />);
-  fireEvent.click(screen.getByRole("button", { name: "Eingaben prüfen" }));
+  fireEvent.click(screen.getByRole("button", { name: "Nachricht senden" }));
   const name = screen.getByLabelText("Name");
   expect(name.getAttribute("aria-invalid")).toBe("true");
   expect(
@@ -16,8 +22,13 @@ test("empty fields show associated errors and focus the first invalid field", ()
   ).toContain("Namen");
   expect(document.activeElement).toBe(name);
 });
-test("valid preview input is checked locally and never claims a message was sent", () => {
-  const fetchSpy = vi.fn();
+test("valid input is sent and the form confirms delivery", async () => {
+  const fetchSpy = vi.fn().mockResolvedValue(
+    new Response(JSON.stringify({ success: true }), {
+      status: 200,
+      headers: { "content-type": "application/json" },
+    }),
+  );
   vi.stubGlobal("fetch", fetchSpy);
   render(<ContactForm />);
   fireEvent.change(screen.getByLabelText("Name"), {
@@ -32,18 +43,13 @@ test("valid preview input is checked locally and never claims a message was sent
   fireEvent.change(screen.getByLabelText("Nachricht"), {
     target: { value: "Dies ist eine Testnachricht." },
   });
-  fireEvent.click(screen.getByRole("button", { name: "Eingaben prüfen" }));
-  expect(screen.getByRole("status").textContent).toContain("nicht gesendet");
-  expect(fetchSpy).not.toHaveBeenCalled();
-  expect(
-    (screen.getByLabelText("Nachricht") as HTMLTextAreaElement).value,
-  ).toBe("Dies ist eine Testnachricht.");
-  fireEvent.change(screen.getByLabelText("E-Mail"), {
-    target: { value: "invalid" },
-  });
-  expect(screen.queryByRole("status")).toBeNull();
-  fireEvent.click(screen.getByRole("button", { name: "Eingaben prüfen" }));
-  expect(screen.getByLabelText("E-Mail").getAttribute("aria-invalid")).toBe(
-    "true",
+  fireEvent.click(screen.getByRole("button", { name: "Nachricht senden" }));
+  await waitFor(() =>
+    expect(screen.getByRole("status").textContent).toContain("gesendet"),
   );
+  expect(fetchSpy).toHaveBeenCalledWith(
+    "/api/contact",
+    expect.objectContaining({ method: "POST" }),
+  );
+  expect((screen.getByLabelText("Name") as HTMLInputElement).value).toBe("");
 });

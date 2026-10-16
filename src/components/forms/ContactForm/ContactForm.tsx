@@ -14,7 +14,9 @@ export function ContactForm() {
   const [errors, setErrors] = useState<
     Partial<Record<keyof ContactInput, string>>
   >({});
-  const [checked, setChecked] = useState(false);
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
   const form = useRef<HTMLFormElement>(null);
   const fields = [
     {
@@ -52,9 +54,9 @@ export function ContactForm() {
       aria-label="Kontaktformular"
       aria-describedby="contact-preview"
       noValidate
-      onSubmit={(event) => {
+      onSubmit={async (event) => {
         event.preventDefault();
-        setChecked(false);
+        setStatus("idle");
         const result = contactSchema.safeParse(
           Object.fromEntries(new FormData(event.currentTarget)),
         );
@@ -73,7 +75,24 @@ export function ContactForm() {
           return;
         }
         setErrors({});
-        setChecked(true);
+        setStatus("submitting");
+        try {
+          const response = await fetch("/api/contact", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({
+              ...result.data,
+              website: String(
+                new FormData(event.currentTarget).get("website") ?? "",
+              ),
+            }),
+          });
+          if (!response.ok) throw new Error("Contact request failed");
+          form.current?.reset();
+          setStatus("success");
+        } catch {
+          setStatus("error");
+        }
       }}
       className="rounded-3xl border border-forest/15 bg-white/60 p-6 sm:p-9"
     >
@@ -82,11 +101,12 @@ export function ContactForm() {
         id="contact-preview"
         className="mb-7 mt-3 rounded-xl bg-sage/50 p-4 text-sm leading-6"
       >
-        Formularvorschau: Du kannst die Eingaben prüfen. Nachrichten werden noch
-        nicht gesendet oder gespeichert. Bitte verwende zum Testen nur
-        Beispieldaten.
+        Deine Nachricht wird per E-Mail an Neuer Tag e.V. gesendet.
       </p>
-      <fieldset disabled={!ready} className="space-y-5">
+      <fieldset
+        disabled={!ready || status === "submitting"}
+        className="space-y-5"
+      >
         <legend className="mb-5 text-sm text-muted">
           Alle Felder sind Pflichtfelder.
         </legend>
@@ -104,7 +124,7 @@ export function ContactForm() {
             className:
               "mt-2 w-full min-w-0 rounded-xl border border-forest/30 bg-cream px-4 py-3 text-base aria-invalid:border-red-700",
             onChange: () => {
-              setChecked(false);
+              setStatus("idle");
               setErrors((previous) => ({
                 ...previous,
                 [field.name]: undefined,
@@ -136,13 +156,23 @@ export function ContactForm() {
             </div>
           );
         })}
+        <div className="absolute -left-[9999px]" aria-hidden="true">
+          <label htmlFor="contact-website">Website</label>
+          <input
+            id="contact-website"
+            name="website"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
         {Object.values(errors).some(Boolean) && (
           <p role="alert" className="text-sm text-red-800">
             Bitte prüfe die markierten Felder.
           </p>
         )}
         <button type="submit" className="button button-orange w-full sm:w-auto">
-          Eingaben prüfen
+          {status === "submitting" ? "Wird gesendet …" : "Nachricht senden"}
         </button>
       </fieldset>
       {!ready && (
@@ -150,13 +180,21 @@ export function ContactForm() {
           Für die lokale Prüfung der Eingaben ist JavaScript erforderlich.
         </p>
       )}
-      {checked && (
+      {status === "success" && (
         <p
           role="status"
           className="mt-5 rounded-xl border border-forest/20 bg-sage/50 p-4 text-sm leading-6"
         >
-          Die Eingaben sind gültig. Deine Nachricht wurde nicht gesendet. Der
-          Versand ist in dieser Vorschau noch nicht verfügbar.
+          Vielen Dank. Deine Nachricht wurde erfolgreich gesendet.
+        </p>
+      )}
+      {status === "error" && (
+        <p
+          role="alert"
+          className="mt-5 rounded-xl border border-red-800/30 bg-red-50 p-4 text-sm leading-6 text-red-900"
+        >
+          Die Nachricht konnte gerade nicht gesendet werden. Bitte versuche es
+          später erneut oder schreibe direkt an info@neuertag-ev.de.
         </p>
       )}
     </form>
