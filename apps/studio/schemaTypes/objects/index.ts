@@ -30,6 +30,48 @@ export const link = defineType({
   type: "object",
   fields: linkFields,
 });
+export const navigationItem = defineType({
+  name: "navigationItem",
+  title: "Menüeintrag",
+  type: "object",
+  fields: [
+    defineField({
+      name: "label",
+      title: "Beschriftung im Hauptmenü",
+      type: "string",
+      validation: (r) => r.required(),
+    }),
+    defineField({
+      name: "href",
+      title: "Ziel (für einen direkten Link oder eine Übersichtsseite)",
+      type: "url",
+      validation: (r) => r.uri({
+        allowRelative: true,
+        scheme: ["http", "https", "mailto", "tel"],
+      }).custom((value) =>
+        !value || /^(https?:\/\/|mailto:|tel:|\/(?!\/)|#)/i.test(value)
+          ? true
+          : "Links müssen mit /, # oder einem erlaubten Protokoll beginnen.",
+      ),
+    }),
+    defineField({
+      name: "children",
+      title: "Unterpunkte (optional)",
+      type: "array",
+      of: [defineArrayMember({ type: "link" })],
+    }),
+  ],
+  validation: (r) => r.custom((item) => {
+    if (!item || typeof item !== "object") return true;
+    const entry = item as { href?: string; children?: unknown[] };
+    return entry.href || entry.children?.length
+      ? true
+      : "Bitte ein Ziel oder mindestens einen Unterpunkt eingeben.";
+  }),
+  preview: {
+    select: { title: "label", subtitle: "href" },
+  },
+});
 export const imageWithCaption = defineType({
   name: "imageWithCaption",
   title: "Bild",
@@ -198,6 +240,7 @@ export const faq = defineType({
 });
 export const objects = [
   link,
+  navigationItem,
   imageWithCaption,
   seo,
   hero,

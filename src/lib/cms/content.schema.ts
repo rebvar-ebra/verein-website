@@ -77,6 +77,11 @@ export const seoSchema = z
   })
   .nullish();
 export const linkSchema = z.object({ label: z.string(), href: safeHref });
+export const navigationItemSchema = z.object({
+  label: z.string().min(1),
+  href: safeHref.optional(),
+  children: z.array(linkSchema).optional(),
+}).refine((item) => Boolean(item.href || item.children?.length), "Menu item needs a link or submenu");
 export const teamSchema = z.object({
   bio: bodySchema.default([]),
   phone: z.string().nullish(),
@@ -166,6 +171,7 @@ export const settingsSchema = z.object({
   phone: z.string().nullish(),
   address: z.string().nullish(),
   navigation: z.array(linkSchema),
+  headerNavigation: z.array(navigationItemSchema).default([]),
   footerNavigation: z.array(linkSchema),
   socialLinks: z.array(linkSchema),
   emergencyPhone: z.string().nullish(),

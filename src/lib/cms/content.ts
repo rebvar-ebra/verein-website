@@ -18,6 +18,7 @@ import { newsQuery } from "./queries/news";
 import { pageQuery } from "./queries/pages";
 import { settingsQuery } from "./queries/settings";
 import { imageUrl } from "./sanity.image";
+import { orderProjects } from "./project-order";
 const paragraphs = (items: string[]): CmsBody =>
   items.map((text, i) => ({
     _type: "block",
@@ -48,13 +49,13 @@ export const getProjects = cache(async () => {
       publishedAt: "",
       isPreview: true,
     }));
-  return (await fetchCms(projectsQuery, z.array(projectSchema))).map((p) => ({
+  return orderProjects((await fetchCms(projectsQuery, z.array(projectSchema))).map((p) => ({
     ...p,
     image: imageUrl(p.image),
     alt: p.image?.alt || "",
     detail: "",
     isPreview: false,
-  }));
+  })));
 });
 export const getArticles = cache(async () => {
   if (!cmsEnabled)

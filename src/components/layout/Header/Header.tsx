@@ -3,22 +3,16 @@ import { BrandMark } from "@/components/ui/arrow";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import Image from "next/image";
-import { clubLinks, projectLinks } from "@/lib/wireframe-content";
 import { NavigationDropdown } from "./NavigationDropdown";
+import { buildHeaderNavigation, type NavigationItem } from "./navigation";
 export function Header({
-  navigation = clubLinks,
-  projects = projectLinks,
+  menus = buildHeaderNavigation(),
 }: {
-  name?: string;
-  navigation?: { label: string; href: string }[];
-  projects?: { label: string; href: string }[];
+  menus?: NavigationItem[];
 }) {
   const [open, setOpen] = useState(false);
   const toggle = useRef<HTMLButtonElement>(null);
-  const mobileLinks = [
-    { label: "Projekte", href: "/projekte" },
-    ...navigation,
-    { label: "News", href: "/news" },
+  const mobileActions = [
     { label: "Mitglied werden", href: "/mitglied-werden" },
     { label: "Spenden", href: "/spenden" },
   ];
@@ -51,11 +45,13 @@ export function Header({
           aria-label="Hauptnavigation"
           className="hidden items-center gap-8 lg:flex"
         >
-          <NavigationDropdown label="Projekte" links={projects} />
-          <NavigationDropdown label="Über uns" links={navigation} />
-          <Link href="/news" className="nav-link text-sm">
-            News
-          </Link>
+          {menus.map((menu) => menu.children?.length ? (
+            <NavigationDropdown key={menu.label} label={menu.label} href={menu.href} links={menu.children} />
+          ) : menu.href ? (
+            <Link key={menu.label} href={menu.href} className="nav-link text-sm">
+              {menu.label}
+            </Link>
+          ) : null)}
         </nav>
         <div className="flex items-center gap-5">
           <Link
@@ -105,13 +101,34 @@ export function Header({
         hidden={!open}
         className="absolute inset-x-0 top-full max-h-[calc(100dvh-8rem)] overflow-y-auto border-b border-forest/20 bg-cream px-6 py-3 shadow-lg lg:hidden"
       >
-        {mobileLinks.map((link) => (
+        {menus.map((menu) => menu.children?.length ? (
+          <details key={menu.label} className="border-b border-forest/10 py-1">
+            <summary className="cursor-pointer py-3 font-medium marker:text-orange">
+              {menu.label}
+            </summary>
+            {menu.href && (
+              <Link href={menu.href} onClick={() => setOpen(false)} className="block py-3 pl-5 text-sm">
+                {menu.label} – Übersicht
+              </Link>
+            )}
+            {menu.children.map((link) => (
+              <Link key={`${link.href}-${link.label}`} href={link.href} onClick={() => setOpen(false)} className="block py-3 pl-5 text-sm">
+                {link.label}
+              </Link>
+            ))}
+          </details>
+        ) : menu.href ? (
           <Link
-            key={link.href}
-            href={link.href}
+            key={`${menu.href}-${menu.label}`}
+            href={menu.href}
             onClick={() => setOpen(false)}
             className="block border-b border-forest/10 py-4"
           >
+            {menu.label}
+          </Link>
+        ) : null)}
+        {mobileActions.map((link) => (
+          <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="block border-b border-forest/10 py-4">
             {link.label}
           </Link>
         ))}

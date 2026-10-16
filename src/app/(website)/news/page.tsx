@@ -8,7 +8,6 @@ export default function Page() {
       <PageIntro
         title="Alle News"
         text="Neuigkeiten und Einblicke aus unseren Projekten und dem Vereinsleben."
-        eyebrow="Einblicke & Geschichten"
       />
       <section className="shell pb-20">
         <NewsGrid />

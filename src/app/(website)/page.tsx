@@ -15,7 +15,7 @@ export default function Home() {
   if (cmsEnabled) return <EditorialPage type="homepage"></EditorialPage>;
   return (
     <main id="main-content">
-      <PageBanner />
+      <PageBanner focus="faces" />
       <PageIntro
         title="Wir sind Neuer Tag."
         text={homepage.introduction}
