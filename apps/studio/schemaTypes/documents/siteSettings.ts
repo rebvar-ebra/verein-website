@@ -101,9 +101,10 @@ export const siteSettings = defineType({
                 if (!value) return true;
                 try {
                   const url = new URL(value);
-                  return url.hostname === "www.betterplace.org"
+                  return url.hostname === "www.betterplace.org" &&
+                    /\/projects\/\d+(?:[-/]|$)/.test(url.pathname)
                     ? true
-                    : "Nur Links von www.betterplace.org sind erlaubt.";
+                    : "Bitte einen Betterplace-Projekt- oder Spendenlink mit Projekt-ID eintragen.";
                 } catch {
                   return "Bitte eine gültige Betterplace-URL eintragen.";
                 }
