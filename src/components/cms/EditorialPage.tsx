@@ -197,11 +197,6 @@ export async function EditorialPage({
           }
         />
         <CrossLink
-          href="/kontakt"
-          title="Fragen zur Mitgliedschaft?"
-          label="Uns kontaktieren"
-        />
-        <CrossLink
           href="/spenden"
           title="Oder unterstütze uns mit einer Spende"
           label="Zur Spendenseite"
