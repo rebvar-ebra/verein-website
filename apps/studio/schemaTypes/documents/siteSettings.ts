@@ -91,8 +91,23 @@ export const siteSettings = defineType({
         defineField({
           name: "betterplaceUrl",
           title: "Betterplace-Spendenlink",
+          description:
+            "Öffentliche Projekt- oder Spenden-URL einfügen. Die Website lädt Titel, Bild und Spendenstand automatisch von Betterplace.",
           type: "url",
-          validation: (r) => r.uri({scheme: ["https"]}),
+          validation: (r) =>
+            r
+              .uri({ scheme: ["https"] })
+              .custom((value) => {
+                if (!value) return true;
+                try {
+                  const url = new URL(value);
+                  return url.hostname === "www.betterplace.org"
+                    ? true
+                    : "Nur Links von www.betterplace.org sind erlaubt.";
+                } catch {
+                  return "Bitte eine gültige Betterplace-URL eintragen.";
+                }
+              }),
         }),
         defineField({
           name: "paypalUrl",
