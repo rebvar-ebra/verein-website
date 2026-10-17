@@ -1,4 +1,5 @@
 import { BrandMark } from "@/components/ui/arrow";
+import Link from "next/link";
 export function CTASection() {
   return (
     <section id="mitmachen" className="shell section-space">
@@ -18,6 +19,7 @@ export function CTASection() {
             text: "Bring deine Fähigkeiten ein und gestalte das Miteinander aktiv mit.",
             label: "Ehrenamt entdecken",
             id: "ehrenamt",
+            href: null,
             detail:
               "Konkrete Einsatzmöglichkeiten und Ansprechpersonen werden vor dem Start ergänzt.",
           },
@@ -26,6 +28,7 @@ export function CTASection() {
             text: "Werde Teil der Gemeinschaft und begleite Neuer Tag auf seinem Weg.",
             label: "Zur Mitgliedschaft",
             id: "mitglied-werden",
+            href: null,
             detail:
               "Informationen zu Beiträgen, Voraussetzungen und dem Mitgliedsantrag folgen. Hier wird noch kein Antrag übermittelt.",
           },
@@ -34,8 +37,8 @@ export function CTASection() {
             text: "Unterstützung kann Ideen weiterbringen und neue Möglichkeiten eröffnen.",
             label: "Über Spenden",
             id: "spenden",
-            detail:
-              "Die Spendenfunktion ist noch nicht eingerichtet. In dieser Vorschau werden keine Zahlungen angenommen.",
+            href: "/spenden",
+            detail: null,
           },
         ].map((item, i) => (
           <article
@@ -55,7 +58,16 @@ export function CTASection() {
             <p className="mb-7 mt-3 text-sm leading-6 text-muted">
               {item.text}
             </p>
-            <details className="group/disclosure">
+            {item.href ? (
+              <Link
+                href={item.href}
+                className="flex min-h-11 items-center justify-between border-t border-forest/15 pt-5 text-sm font-medium"
+              >
+                {item.label}
+                <span aria-hidden="true" className="text-xl">→</span>
+              </Link>
+            ) : (
+              <details className="group/disclosure">
               <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between border-t border-forest/15 pt-5 text-sm font-medium">
                 {item.label}
                 <span aria-hidden="true" className="shrink-0 text-xl">
@@ -63,8 +75,9 @@ export function CTASection() {
                   <span className="hidden group-open/disclosure:inline">−</span>
                 </span>
               </summary>
-              <p className="mt-4 text-sm leading-6">{item.detail}</p>
-            </details>
+                <p className="mt-4 text-sm leading-6">{item.detail}</p>
+              </details>
+            )}
           </article>
         ))}
       </div>
