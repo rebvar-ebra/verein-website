@@ -1,6 +1,6 @@
 import { PageFaqs, PageSponsors } from "@/components/cms/StructureSections";
 import Image from "next/image";
-import { imageUrl, imageDownloadUrl } from "@/lib/cms/sanity.image";
+import { imageUrl } from "@/lib/cms/sanity.image";
 import { notFound } from "next/navigation";
 import { getProjects } from "@/lib/cms/content";
 import { RichText } from "@/components/cms/RichText";
@@ -39,8 +39,15 @@ export default async function Page({
   const projects = await getProjects();
   const project = projects.find((p) => p.id === slug);
   if (!project) notFound();
-  const offersDownload = project.id === "dalia"
-    ? imageDownloadUrl(project.gallery[0])
+  const scheduleDownloadUrl = project.scheduleFile
+    ? (() => {
+        const url = new URL(project.scheduleFile.url);
+        url.searchParams.set(
+          "dl",
+          project.scheduleFile.originalFilename || "Programm",
+        );
+        return url.toString();
+      })()
     : null;
 
   return (
@@ -81,9 +88,9 @@ export default async function Page({
             {project.schedule ||
               "Termine und ein freigegebener Wochenplan sind noch nicht verfügbar."}
           </p>
-          {offersDownload && (
-            <a href={offersDownload} download className="button align-center button-orange mt-6">
-              Unsere Angebote herunterladen <span aria-hidden="true">↓</span>
+          {scheduleDownloadUrl && (
+            <a href={scheduleDownloadUrl} download className="button align-center button-orange mt-6">
+              {project.scheduleDownloadLabel} <span aria-hidden="true">↓</span>
             </a>
           )}
         </PreviewPanel>

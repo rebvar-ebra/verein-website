@@ -74,11 +74,34 @@ export const project = defineType({
       type: "array",
       of: [defineArrayMember({ type: "imageWithCaption" })],
     }),
-    defineField({ name: "address", title: "Standort", type: "text" }),
+    defineField({
+      name: "address",
+      title: "Standort / Adresse",
+      description:
+        "Die Adresse wird im Kasten „Wo wir sind“ angezeigt und öffnet Google Maps. Mehrere Standorte mit einer Leerzeile trennen.",
+      type: "text",
+    }),
     defineField({
       name: "schedule",
-      title: "Wochenplan / Angebot",
+      title: "Beschreibung im Kasten „Was es gibt“",
+      description:
+        "Kurze Informationen zu Angeboten, Terminen oder dem Wochenplan.",
       type: "text",
+    }),
+    defineField({
+      name: "scheduleFile",
+      title: "Programm / Wochenplan hochladen",
+      description:
+        "Nach dem Hochladen erscheint automatisch ein Download-Button auf der Projektseite.",
+      type: "file",
+      options: { accept: ".pdf,.doc,.docx,.jpg,.jpeg,.png" },
+    }),
+    defineField({
+      name: "scheduleDownloadLabel",
+      title: "Text des Download-Buttons",
+      type: "string",
+      initialValue: "Unsere Angebote herunterladen",
+      validation: (r) => r.max(80),
     }),
     defineField({
       name: "featured",

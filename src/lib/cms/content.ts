@@ -40,6 +40,8 @@ export const getProjects = cache(async () => {
       status: null,
       address: null,
       schedule: null,
+      scheduleFile: null,
+      scheduleDownloadLabel: "Unsere Angebote herunterladen",
       teamMembers: [],
       gallery: [],
       faqs: [],
