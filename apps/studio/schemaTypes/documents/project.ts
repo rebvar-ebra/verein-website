@@ -13,6 +13,14 @@ export const project = defineType({
       of: [defineArrayMember({ type: "faq" })],
     }),
     defineField({
+      name: "sponsorsTitle",
+      title: "Überschrift der Projektförderer",
+      description: "Diese Überschrift wird über den Förderlogos angezeigt.",
+      type: "string",
+      initialValue: "Projekt gefördert durch:",
+      validation: (r) => r.max(120),
+    }),
+    defineField({
       name: "sponsors",
       title: "Projektförderer",
       type: "array",
