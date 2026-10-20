@@ -43,6 +43,7 @@ export const getProjects = cache(async () => {
       teamMembers: [],
       gallery: [],
       faqs: [],
+      sponsorsTitle: "Projekt gefördert durch:",
       sponsors: [],
       seo: null,
       featured: true,

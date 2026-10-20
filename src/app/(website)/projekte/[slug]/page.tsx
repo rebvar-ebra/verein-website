@@ -99,7 +99,7 @@ export default async function Page({
       />
       <PageFaqs faqs={project.faqs} />
       <PageSponsors
-        title="Projekt gefördert durch:"
+        title={project.sponsorsTitle}
         images={project.sponsors}
       />
     </main>

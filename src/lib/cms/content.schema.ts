@@ -97,6 +97,7 @@ export const projectSchema = z.object({
   faqs: z
     .array(z.object({ question: z.string(), answer: z.string() }))
     .default([]),
+  sponsorsTitle: z.string().min(1).max(120),
   sponsors: z.array(imageSchema).default([]),
   _id: z.string(),
   id: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
