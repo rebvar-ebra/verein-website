@@ -112,6 +112,16 @@ export const projectSchema = z.object({
   status: z.string().nullish(),
   address: z.string().nullish(),
   schedule: z.string().nullish(),
+  scheduleFile: z
+    .object({
+      url: z.url().refine((value) => {
+        const url = new URL(value);
+        return url.protocol === "https:" && url.hostname === "cdn.sanity.io";
+      }),
+      originalFilename: z.string().nullish(),
+    })
+    .nullish(),
+  scheduleDownloadLabel: z.string().min(1).max(80),
   teamMembers: z.array(teamSchema),
   gallery: z.array(imageSchema),
   seo: seoSchema,

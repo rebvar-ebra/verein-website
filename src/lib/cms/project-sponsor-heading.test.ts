@@ -20,6 +20,11 @@ const project = {
   status: null,
   address: null,
   schedule: null,
+  scheduleFile: {
+    url: "https://cdn.sanity.io/files/x34rtnfv/production/plan.pdf",
+    originalFilename: "Wochenplan.pdf",
+  },
+  scheduleDownloadLabel: "Wochenplan herunterladen",
   teamMembers: [],
   gallery: [],
   seo: null,
@@ -35,6 +40,22 @@ describe("project sponsor heading", () => {
   it("provides the existing German heading for older project documents", () => {
     expect(projectProjection).toContain(
       '"sponsorsTitle":coalesce(sponsorsTitle,"Projekt gefördert durch:")',
+    );
+  });
+
+  it("preserves the uploaded schedule and its editable download label", () => {
+    const parsed = projectSchema.parse(project);
+
+    expect(parsed.scheduleFile).toEqual(project.scheduleFile);
+    expect(parsed.scheduleDownloadLabel).toBe("Wochenplan herunterladen");
+  });
+
+  it("loads the uploaded schedule file from Sanity", () => {
+    expect(projectProjection).toContain(
+      '"scheduleFile":scheduleFile.asset->{url,originalFilename}',
+    );
+    expect(projectProjection).toContain(
+      '"scheduleDownloadLabel":coalesce(scheduleDownloadLabel,"Unsere Angebote herunterladen")',
     );
   });
 });
