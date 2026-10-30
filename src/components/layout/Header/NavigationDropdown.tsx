@@ -36,12 +36,9 @@ export function NavigationDropdown({
         className="flex min-h-12 items-center gap-2 px-2 text-sm font-medium"
       >
         {label}
-        <span
-          aria-hidden="true"
-          className={`transition-transform ${open ? "rotate-180" : ""}`}
-        >
-          ⌄
-        </span>
+        <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" className={`size-4 shrink-0 transition-transform ${open ? "rotate-180" : ""}`}>
+          <path d="m5 7.5 5 5 5-5" />
+        </svg>
       </button>
       <div
         id={id}

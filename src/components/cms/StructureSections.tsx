@@ -62,6 +62,7 @@ export function ActionCards({
                 <Link
                   className="button button-orange w-full gap-2 px-3"
                   href={action.link.href}
+                  aria-label={action.link.href.startsWith("/projekte/") ? `${action.link.label} – ${action.title}` : undefined}
                 >
                   <span>{action.link.label}</span>
                   <span aria-hidden="true" className="shrink-0">
@@ -135,7 +136,7 @@ export function PageSponsors({
                 <Image
                   key={i}
                   src={imageUrl(image, 1000)}
-                  alt={image.alt || ""}
+                  alt={image.alt || image.caption || "Förderpartner"}
                   width={288}
                   height={144}
                   sizes="(max-width: 768px) 240px, 288px"

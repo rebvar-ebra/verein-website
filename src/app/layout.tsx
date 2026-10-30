@@ -42,6 +42,7 @@ export async function generateMetadata(): Promise<Metadata> {
   if (!settings) return previewMetadata;
   return {
     ...previewMetadata,
+    robots: { index: process.env.VERCEL_ENV !== "preview", follow: process.env.VERCEL_ENV !== "preview" },
     title: {
       default: settings.defaultSeo?.title || settings.organisationName,
       template: `%s | ${settings.organisationName}`,

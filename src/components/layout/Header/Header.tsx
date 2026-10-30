@@ -62,11 +62,11 @@ export function Header({
           </Link>
           <Link
             href="/spenden"
-            className="button button-orange hidden px-[22px] py-[10px] sm:inline-flex"
+            className="button button-orange hidden gap-3 px-[22px] py-[10px] sm:inline-flex"
           >
             Spenden{" "}
             <span aria-hidden="true">
-              <BrandMark className="h-6 w-6 brightness-0 invert" />
+              <BrandMark className="h-8 w-8 brightness-0 invert" />
             </span>
           </Link>
           <button

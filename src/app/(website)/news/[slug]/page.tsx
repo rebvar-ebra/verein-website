@@ -42,6 +42,7 @@ export default async function Page({
           text={article.excerpt}
           eyebrow={`${article.category}${article.isPreview ? " · Redaktioneller Entwurf" : ""}`}
         />
+        {article.publishedAt && <p className="mb-8 text-center text-sm text-muted"><time dateTime={article.publishedAt}>{new Intl.DateTimeFormat("de-DE", { dateStyle: "long", timeZone: "Europe/Berlin" }).format(new Date(article.publishedAt))}</time></p>}
         <div className="mx-auto max-w-4xl gap-12 px-6 pb-16 md:columns-2">
           <RichText value={article.content} />
         </div>

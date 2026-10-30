@@ -79,7 +79,7 @@ export function DonationOptions({
       <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
       <div className="overflow-hidden rounded-3xl border border-divider bg-white shadow-sm">
         <div className="bg-paper p-6 sm:p-8">
-          <p className="mb-5 text-sm font-semibold uppercase tracking-widest">Deine Unterstützung</p>
+          <p className="mb-5 text-sm font-semibold uppercase tracking-widest">deine Unterstützung</p>
           <div className="relative isolate overflow-hidden rounded-2xl bg-orange p-6 text-white sm:p-8">
             <div aria-hidden="true" className="absolute -right-12 -top-20 -z-10 size-64 rounded-full border-[32px] border-white/15" />
             <div aria-hidden="true" className="absolute -bottom-24 -left-12 -z-10 size-56 rounded-full border-[32px] border-white/15" />
@@ -93,7 +93,8 @@ export function DonationOptions({
         </div>
         <div className="p-6 sm:p-8">
           <fieldset>
-            <legend className="mb-4 text-lg font-semibold">Deinen Betrag wählen</legend>
+            <legend className="mb-4 text-lg font-semibold">deinen Betrag wählen</legend>
+            <p className="mb-4 text-sm text-muted">Die Auswahl ist eine Orientierung. Den endgültigen Betrag wählst du beim Zahlungsanbieter erneut. Hier wird keine Zahlung ausgelöst.</p>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
               {[10, 20, 50, 100].map(value => (
                 <label key={value} className="cursor-pointer">
@@ -107,7 +108,7 @@ export function DonationOptions({
             </div>
           </fieldset>
           <div className="my-6 flex items-center justify-between gap-4 border-y border-divider py-5">
-            <span>Dein Spendenbetrag</span>
+            <span>dein Spendenbetrag</span>
             <strong className="text-2xl tabular-nums">{amount} €</strong>
           </div>
           {paymentUrl ? (
@@ -130,7 +131,7 @@ export function DonationOptions({
               Betterplace nimmt diese Kampagne derzeit keine Online-Spenden an. Bitte nutze die Banküberweisung oder versuche es später erneut.
             </p>
           ) : (
-            <p className="text-muted">Online-Spenden sind noch nicht eingerichtet. Du kannst uns per Banküberweisung unterstützen.</p>
+            <p className="text-muted">Online-Spenden sind noch nicht eingerichtet. du kannst uns per Banküberweisung unterstützen.</p>
           )}
         </div>
       </div>

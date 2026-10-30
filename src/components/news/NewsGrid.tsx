@@ -27,6 +27,7 @@ export async function NewsGrid({
               {article.category}
               {article.isPreview ? " · Entwurf" : ""}
             </p>
+            {article.publishedAt && <time dateTime={article.publishedAt} className="mb-3 block text-sm text-muted">{new Intl.DateTimeFormat("de-DE", { dateStyle: "long", timeZone: "Europe/Berlin" }).format(new Date(article.publishedAt))}</time>}
             <h2 className="text-xl font-medium">
               <Link
                 href={`/news/${article.slug}`}

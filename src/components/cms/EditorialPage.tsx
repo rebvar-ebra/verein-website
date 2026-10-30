@@ -38,8 +38,8 @@ export async function EditorialPage({
     );
   const body = (
     <div className="shell">
-      <div className="mx-auto max-w-3xl">
-        <RichText value={page.content} />
+      <div className="mx-auto max-w-5xl">
+        <RichText value={page.content} layout="section" />
       </div>
     </div>
   );
@@ -55,6 +55,7 @@ export async function EditorialPage({
     <TeamSection
       title={type === "helpPage" ? "Deine Ansprechpersonen" : "Unser Team"}
       members={page.teamMembers}
+      compact={type !== "aboutPage"}
     />
   );
   const sections = <PageSections sections={page.sections} />;
@@ -130,8 +131,8 @@ export async function EditorialPage({
         {team}
         <section className="shell section-space">
           <h2 className="mb-8 text-center">Unsere Gründung</h2>
-          <div className="mx-auto max-w-3xl">
-            <RichText value={page.content} />
+          <div className="mx-auto max-w-5xl">
+            <RichText value={page.content} layout="section" />
           </div>
         </section>
         {sections}
@@ -172,8 +173,8 @@ export async function EditorialPage({
           <h2 className="mb-8 text-center">
             Schritt für Schritt Mitglied werden
           </h2>
-          <div className="mx-auto max-w-3xl">
-            <RichText value={page.content} />
+          <div className="mx-auto max-w-5xl">
+            <RichText value={page.content} layout="section" />
           </div>
         </section>
         {sections}
@@ -210,8 +211,8 @@ export async function EditorialPage({
         {children && <div className="shell pb-12">{children}</div>}
         <section className="shell section-space">
           <h2 className="mb-8 text-center">Spendennachweis</h2>
-          <div className="mx-auto max-w-3xl">
-            <RichText value={page.content} />
+          <div className="mx-auto max-w-5xl">
+            <RichText value={page.content} layout="section" />
           </div>
         </section>
         {team}
@@ -283,8 +284,8 @@ export async function EditorialPage({
       <PageIntro
         title={page.hero?.title || page.title}
         text={page.hero?.text || page.introduction}
-        eyebrow={page.hero?.eyebrow || ""}
-        eyebrowLogo={type === "applicationPage" ? (settings?.logo ? imageUrl(settings.logo, 500) : "/brand/neuer-tag-caption.webp") : undefined}
+        eyebrow={["applicationPage", "membershipPage"].includes(type) ? "" : page.hero?.eyebrow || ""}
+        eyebrowLogo={["applicationPage", "membershipPage"].includes(type) ? (settings?.logo ? imageUrl(settings.logo, 500) : "/brand/neuer-tag-caption.webp") : undefined}
       />
       {content}
     </main>

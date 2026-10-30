@@ -89,6 +89,12 @@ export const project = defineType({
       type: "text",
     }),
     defineField({
+      name: "schedulePreview",
+      title: "Vorschaubild des Wochenplans",
+      description: "Ein Bild des Plans. Im Alternativtext die wichtigsten Angebote und Termine kurz beschreiben. Das Bild verlinkt auf die hochgeladene Programmdatei.",
+      type: "imageWithCaption",
+    }),
+    defineField({
       name: "scheduleFile",
       title: "Programm / Wochenplan hochladen",
       description:
