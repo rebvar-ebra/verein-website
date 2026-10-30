@@ -6,10 +6,12 @@ export function TeamSection({
   title = "Unser Team",
   count = 6,
   members,
+  compact = true,
 }: {
   title?: string;
   count?: number;
   members?: CmsTeamMember[];
+  compact?: boolean;
 }) {
   if (members && !members.length) return null;
   return (
@@ -21,9 +23,9 @@ export function TeamSection({
         </p>
       )}
       {members && members.length > 0 ? (
-        <div className="mx-auto mt-10 flex max-w-4xl flex-wrap justify-center gap-x-8 gap-y-14">
+        <div className="mx-auto mt-10 flex max-w-5xl flex-wrap justify-center gap-x-8 gap-y-14">
           {members.map((member) => (
-            <div key={member._id} className="w-full sm:w-60">
+            <div key={member._id} className={compact ? "w-full sm:w-72" : "w-full sm:w-60"}>
               {member.image ? (
                 <Image
                   src={imageUrl(member.image, 320)}
@@ -39,19 +41,18 @@ export function TeamSection({
                 />
               )}
               {member.image?.caption && <p className="mt-3 text-xs leading-5! text-muted">{member.image.caption}</p>}
-              <p className="mt-5 font-medium leading-7!">{member.name}</p>
-              <p className="mt-2 text-sm leading-7! text-muted">{member.role}</p>
-              {member.languages && <p className="mt-3 text-sm leading-7! text-muted">{member.languages}</p>}
-              {member.phone && <a className="mt-3 block text-sm leading-7! underline" href={`tel:${member.phone.replace(/[^+0-9]/g, "")}`}>{member.phone}</a>}
+              <div className={compact ? "mt-5 space-y-4" : "mt-5 space-y-3"}>
+                <p className="font-medium">{member.name}</p>
+                <div className="space-y-1 text-sm text-muted">
+                  <p className="leading-snug!">{member.role}</p>
+                  {member.languages && <p className="leading-snug!">{member.languages}</p>}
+                </div>
+                <div className="space-y-1 text-sm">
+                  {member.phone && <a className="block underline" href={`tel:${member.phone.replace(/[^+0-9]/g, "")}`}>{member.phone}</a>}
+                  {member.email && <a className="inline-block underline" href={`mailto:${member.email}`}>E-Mail</a>}
+                </div>
+              </div>
               {member.bio.length > 0 && <details className="mt-4 text-left text-sm leading-7!"><summary className="cursor-pointer text-center underline">Mehr über {member.name}</summary><div className="mt-3"><RichText value={member.bio} /></div></details>}
-              {member.email && (
-                <a
-                  className="mt-4 inline-block text-sm leading-7! underline"
-                  href={`mailto:${member.email}`}
-                >
-                  E-Mail
-                </a>
-              )}
             </div>
           ))}
         </div>

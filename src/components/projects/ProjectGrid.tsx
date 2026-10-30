@@ -1,3 +1,4 @@
+import { Arrow } from "@/components/ui/arrow";
 import { imageUrl } from "@/lib/cms/sanity.image";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,7 +29,7 @@ export async function ProjectGrid() {
               alt=""
               fill
               sizes="(max-width:768px) 90vw, 30vw"
-              className={project.logo ? "object-contain bg-white p-6" : "object-cover"}
+              className={project.logo ? "object-contain bg-white" : "object-cover"}
             />
           </Link>
           <div className="flex flex-1 flex-col p-6 text-center">
@@ -41,7 +42,7 @@ export async function ProjectGrid() {
               className="button button-orange  mt-auto w-full"
               aria-label={`${project.title} – zum Projekt`}
             >
-              Zum Projekt →
+              Zum Projekt <Arrow />
             </Link>
           </div>
         </article>

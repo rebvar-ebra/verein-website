@@ -12,6 +12,11 @@
   --color-paper: #f1efed;
   --color-divider: #e0ddda;
   --color-ink: #1f1f1f;
+  --color-maroon: #590027;
+  --color-maroon-hover: #86405c;
+  --color-orange-hover: #fa804a;
+  --color-link-hover: #dd4a55;
+  --color-focus: #ae8092;
   --font-sans: var(--font-open-sans);
   --font-serif: var(--font-houschka);
 }
@@ -29,8 +34,8 @@ body {
   color: white;
 }
 :focus-visible {
-  outline: 3px solid #000000;
-  outline-offset: 5px;
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
 }
 footer :focus-visible {
   outline-color: white;
@@ -78,7 +83,7 @@ main p {
   line-height: 1.6;
 }
 main a:not(.button):hover {
-  color: #bd3a0e;
+  color: var(--color-link-hover);
 }
 .editorial-copy {
   max-width: 40rem;
@@ -148,10 +153,10 @@ main a:not(.button):hover {
     color: white;
   }
   .button-orange:hover {
-    background: #bd3a0e;
+    background: var(--color-link-hover);
   }
   .button-outline {
-    @apply border-2 border-forest text-forest hover:bg-forest hover:text-white;
+    @apply border-2 border-maroon text-maroon hover:bg-maroon hover:text-white;
   }
   .nav-link {
     @apply py-3 underline-offset-8 hover:underline;
@@ -164,4 +169,17 @@ main a:not(.button):hover {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
   }
+}
+
+/* Feedback 1.4: consistent interaction feedback without changing geometry. */
+a, button, summary { transition: color .15s, background-color .15s, border-color .15s; }
+header :is(a, button, summary):not(.button):hover { color: var(--color-maroon-hover); }
+header .button-orange:hover { background: var(--color-orange-hover); color: var(--color-ink); }
+footer a:hover { color: var(--color-link-hover); }
+a[href^="mailto:"] { white-space: nowrap; }
+.editorial-copy-centered { margin-inline: auto; text-align: center; }
+.editorial-copy-columns { max-width: 64rem; }
+@media (min-width: 768px) {
+  .editorial-copy-columns { columns: 2; column-gap: 3rem; text-align: left; }
+  .editorial-copy-columns > :is(h2, h3, figure) { break-inside: avoid; }
 }

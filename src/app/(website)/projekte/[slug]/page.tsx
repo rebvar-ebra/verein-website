@@ -4,7 +4,7 @@ import { imageUrl } from "@/lib/cms/sanity.image";
 import { notFound } from "next/navigation";
 import { getProjects } from "@/lib/cms/content";
 import { RichText } from "@/components/cms/RichText";
-import { ProjectLocations } from "@/components/projects/ProjectLocations";
+import { ProjectLocations, ProjectMaps } from "@/components/projects/ProjectLocations";
 import {
   PageBanner,
   PageIntro,
@@ -74,22 +74,35 @@ export default async function Page({
       />
       {!project.isPreview && (
         <div className="shell pb-16">
-          <div className="mx-auto max-w-3xl">
-            <RichText value={project.content} />
+          <div className="mx-auto max-w-5xl">
+            <RichText value={project.content} layout="section" />
           </div>
         </div>
       )}
       <div className="shell grid gap-6 pb-10 md:grid-cols-2">
-        <PreviewPanel title="Wo wir sind">
-          <ProjectLocations address={project.address} />
+        <PreviewPanel title="Wo wir sind" media={<ProjectMaps address={project.address} />}>
+          <ProjectLocations address={project.address} showMaps={false} />
         </PreviewPanel>
-        <PreviewPanel title="Was es gibt">
+        <PreviewPanel title="Was es gibt" media={<>
+          {project.schedulePreview && (
+            <div className="bg-white">
+              {scheduleDownloadUrl ? (
+                <a href={scheduleDownloadUrl} download aria-label={project.scheduleDownloadLabel}>
+                  <Image src={imageUrl(project.schedulePreview, 1000)} alt={project.schedulePreview.alt || "Wochenplan des Projekts"} width={1000} height={700} className="h-auto w-full object-contain" />
+                </a>
+              ) : (
+                <Image src={imageUrl(project.schedulePreview, 1000)} alt={project.schedulePreview.alt || "Wochenplan des Projekts"} width={1000} height={700} className="h-auto w-full object-contain" />
+              )}
+            </div>
+          )}
+          {!project.schedulePreview && <div className="flex min-h-64 items-center justify-center bg-paper p-6 text-center text-sm text-muted">Die Vorschau des Wochenplans wird hier ergänzt.</div>}
+        </>}>
           <p>
             {project.schedule ||
               "Termine und ein freigegebener Wochenplan sind noch nicht verfügbar."}
           </p>
           {scheduleDownloadUrl && (
-            <a href={scheduleDownloadUrl} download className="button align-center button-orange mt-6">
+            <a href={scheduleDownloadUrl} download className="button button-outline mt-6">
               {project.scheduleDownloadLabel} <span aria-hidden="true">↓</span>
             </a>
           )}

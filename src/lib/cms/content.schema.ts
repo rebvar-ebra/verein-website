@@ -112,6 +112,7 @@ export const projectSchema = z.object({
   status: z.string().nullish(),
   address: z.string().nullish(),
   schedule: z.string().nullish(),
+  schedulePreview: imageSchema,
   scheduleFile: z
     .object({
       url: z.url().refine((value) => {

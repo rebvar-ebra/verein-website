@@ -13,7 +13,7 @@ export function PageIntro({
   return (
     <div className="mx-auto max-w-2xl px-6 pb-12 pt-14 text-center md:pb-16 md:pt-16">
       {eyebrowLogo ? (
-        <Image src={eyebrowLogo} alt="Neuer Tag e.V." width={700} height={263} className="mx-auto mb-5 h-auto w-52 sm:w-64" />
+        <Image src={eyebrowLogo} alt="Neuer Tag e.V." width={700} height={263} className="mx-auto mb-5 h-auto w-60 sm:w-72" />
       ) : eyebrow ? (
         <p className="eyebrow mb-4 text-olive">{eyebrow}</p>
       ) : null}
