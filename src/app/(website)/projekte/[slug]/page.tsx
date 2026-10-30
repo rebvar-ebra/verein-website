@@ -39,16 +39,7 @@ export default async function Page({
   const projects = await getProjects();
   const project = projects.find((p) => p.id === slug);
   if (!project) notFound();
-  const scheduleDownloadUrl = project.scheduleFile
-    ? (() => {
-        const url = new URL(project.scheduleFile.url);
-        url.searchParams.set(
-          "dl",
-          project.scheduleFile.originalFilename || "Programm",
-        );
-        return url.toString();
-      })()
-    : null;
+
 
   return (
     <main id="main-content">
@@ -86,13 +77,9 @@ export default async function Page({
         <PreviewPanel title="Was es gibt" media={<>
           {project.schedulePreview && (
             <div className="bg-white">
-              {scheduleDownloadUrl ? (
-                <a href={scheduleDownloadUrl} download aria-label={project.scheduleDownloadLabel}>
-                  <Image src={imageUrl(project.schedulePreview, 1000)} alt={project.schedulePreview.alt || "Wochenplan des Projekts"} width={1000} height={700} className="h-auto w-full object-contain" />
-                </a>
-              ) : (
+              <a href={imageUrl(project.schedulePreview, 2400)} target="_blank" rel="noopener noreferrer" aria-label="Wochenplan groß ansehen (neuer Tab)" className="block cursor-zoom-in">
                 <Image src={imageUrl(project.schedulePreview, 1000)} alt={project.schedulePreview.alt || "Wochenplan des Projekts"} width={1000} height={700} className="h-auto w-full object-contain" />
-              )}
+              </a>
             </div>
           )}
           {!project.schedulePreview && <div className="flex min-h-64 items-center justify-center bg-paper p-6 text-center text-sm text-muted">Die Vorschau des Wochenplans wird hier ergänzt.</div>}
@@ -101,11 +88,7 @@ export default async function Page({
             {project.schedule ||
               "Termine und ein freigegebener Wochenplan sind noch nicht verfügbar."}
           </p>
-          {scheduleDownloadUrl && (
-            <a href={scheduleDownloadUrl} download className="button button-outline mt-6">
-              {project.scheduleDownloadLabel} <span aria-hidden="true">↓</span>
-            </a>
-          )}
+
         </PreviewPanel>
       </div>
 
